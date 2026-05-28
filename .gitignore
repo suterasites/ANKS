@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Internal Sutera Sites notes - do not ship to client repo
+CLAUDE.md
+assets/README.md
+
+# Stray copy of internal HQ data - must not be published
+assets/Apps/
