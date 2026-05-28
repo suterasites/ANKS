@@ -600,6 +600,7 @@ em {
   max-width: 430px;
   margin-bottom: 2.25rem;
   line-height: 1.55;
+  text-wrap: pretty;
 }
 .hero-ctas {
   display: flex;
