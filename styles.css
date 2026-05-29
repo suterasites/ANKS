@@ -997,6 +997,7 @@ em {
 .faq-title em { color: var(--terracotta); font-style: italic; }
 .faq-viewall {
   display: inline-block;
+  margin-top: 1.75rem;
   font-size: 0.95rem;
   color: var(--ink);
   transition: color var(--transition);
