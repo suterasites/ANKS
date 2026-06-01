@@ -7,3 +7,8 @@ assets/README.md
 
 # Stray copy of internal HQ data - must not be published
 assets/Apps/
+
+# Large source videos kept locally but not deployed (Cloudflare Pages 25 MiB cap)
+assets/pages/north-balwyn/videos/walkthrough.mp4
+assets/pages/sunbury-mansion/videos/testimonial.mp4
+assets/pages/north-balwyn/videos/client-testimonial-original-58mb.mp4
