@@ -101,6 +101,20 @@
     setActive();
   }
 
+  // Featured Projects hover-preview videos
+  document.querySelectorAll('.fp-card').forEach((card) => {
+    const video = card.querySelector('.fp-img-video');
+    if (!video) return;
+    card.addEventListener('mouseenter', () => {
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    });
+    card.addEventListener('mouseleave', () => {
+      video.pause();
+      try { video.currentTime = 0; } catch (e) { /* ignore */ }
+    });
+  });
+
   // Hero video reduced-motion fallback
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const video = document.getElementById('hero-video');
