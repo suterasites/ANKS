@@ -98,13 +98,44 @@
     }, { passive: true });
     if (prev) prev.addEventListener('click', () => scrollToCard(activeIndex() - 1));
     if (next) next.addEventListener('click', () => scrollToCard(activeIndex() + 1));
+
+    cards.forEach((c, i) => {
+      c.addEventListener('click', () => {
+        if (i !== activeIndex()) scrollToCard(i);
+      });
+    });
+
     setActive();
   }
 
+  // Testimonials swap (click side card to activate)
+  const stage = document.getElementById('testimonials-stage');
+  if (stage) {
+    const cards = Array.from(stage.querySelectorAll('.testimonial-card'));
+    cards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        if (card.classList.contains('is-active')) return;
+        cards.forEach((c) => {
+          c.classList.toggle('is-active', c === card);
+          const v = c.querySelector('video');
+          if (v && c !== card) {
+            v.pause();
+            try { v.currentTime = 0; } catch (err) { /* ignore */ }
+          }
+        });
+      });
+    });
+  }
+
   // Featured Projects hover-preview videos
-  document.querySelectorAll('.fp-card').forEach((card) => {
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  const fpCards = Array.from(document.querySelectorAll('.fp-card'));
+
+  fpCards.forEach((card) => {
     const video = card.querySelector('.fp-img-video');
     if (!video) return;
+
+    // Desktop: hover plays
     card.addEventListener('mouseenter', () => {
       const p = video.play();
       if (p && typeof p.catch === 'function') p.catch(() => {});
@@ -113,7 +144,50 @@
       video.pause();
       try { video.currentTime = 0; } catch (e) { /* ignore */ }
     });
+
+    // Touch: first tap plays the preview, taps elsewhere stop it.
+    // Link navigation is suppressed on touch (use the "View all" link in
+    // the section header to reach Instagram on mobile).
+    if (!isTouch) return;
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const wasActive = card.classList.contains('is-touch-active');
+      fpCards.forEach((c) => {
+        if (c === card) return;
+        c.classList.remove('is-touch-active');
+        const v = c.querySelector('.fp-img-video');
+        if (v) {
+          v.pause();
+          try { v.currentTime = 0; } catch (err) { /* ignore */ }
+        }
+      });
+      if (wasActive) {
+        card.classList.remove('is-touch-active');
+        video.pause();
+        try { video.currentTime = 0; } catch (err) { /* ignore */ }
+      } else {
+        card.classList.add('is-touch-active');
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      }
+    });
   });
+
+  // Touch: tapping outside any FP card pauses the active preview
+  if (isTouch) {
+    document.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.fp-card')) return;
+      fpCards.forEach((c) => {
+        if (!c.classList.contains('is-touch-active')) return;
+        c.classList.remove('is-touch-active');
+        const v = c.querySelector('.fp-img-video');
+        if (v) {
+          v.pause();
+          try { v.currentTime = 0; } catch (err) { /* ignore */ }
+        }
+      });
+    }, { passive: true });
+  }
 
   // Hero video reduced-motion fallback
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

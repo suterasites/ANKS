@@ -257,7 +257,7 @@
       <div class="approach-timeline-col">
         <header class="approach-head">
           <p class="eyebrow">Our approach</p>
-          <h2 class="approach-title">Considered at every stage.</h2>
+          <h2 class="approach-title">From brief to establishment.</h2>
         </header>
 
         <ol class="timeline">
@@ -336,7 +336,7 @@
         <a class="fp-card" href="https://www.instagram.com/anksconstruction/" target="_blank" rel="noopener">
           <div class="fp-img">
             <img src="assets/pages/north-balwyn/cover.jpeg" alt="Crazy paving driveway and entry to an architectural North Balwyn home" loading="lazy" />
-            <video class="fp-img-video" muted loop playsinline preload="none" aria-hidden="true">
+            <video class="fp-img-video" muted loop playsinline preload="none" poster="assets/pages/north-balwyn/cover.jpeg" aria-hidden="true">
               <source src="https://pub-e0d001739d794a7ba6f60f91603c9bc3.r2.dev/short-clip.mp4" type="video/mp4" />
             </video>
           </div>
@@ -349,7 +349,7 @@
         <a class="fp-card" href="https://www.instagram.com/anksconstruction/" target="_blank" rel="noopener">
           <div class="fp-img">
             <img src="assets/pages/sunbury-mansion/cover.jpeg" alt="Aerial view of a finished Sunbury estate with boulder retaining, mulch beds and a brick mansion" loading="lazy" />
-            <video class="fp-img-video" muted loop playsinline preload="none" aria-hidden="true">
+            <video class="fp-img-video" muted loop playsinline preload="none" poster="assets/pages/sunbury-mansion/cover.jpeg" aria-hidden="true">
               <source src="https://pub-e0d001739d794a7ba6f60f91603c9bc3.r2.dev/walkthrough.mp4" type="video/mp4" />
             </video>
           </div>
@@ -362,7 +362,7 @@
         <a class="fp-card" href="https://www.instagram.com/anksconstruction/" target="_blank" rel="noopener">
           <div class="fp-img">
             <img src="assets/pages/commercial/photos/mernda-hills-primary/02-aerial-school-complex.jpeg" alt="Aerial view of a commercial school complex with shaded play area, basketball courts and parking" loading="lazy" />
-            <video class="fp-img-video" muted loop playsinline preload="none" aria-hidden="true">
+            <video class="fp-img-video" muted loop playsinline preload="none" poster="assets/pages/commercial/photos/mernda-hills-primary/02-aerial-school-complex.jpeg" aria-hidden="true">
               <source src="https://pub-e0d001739d794a7ba6f60f91603c9bc3.r2.dev/mernda-primary.mp4" type="video/mp4" />
             </video>
           </div>
@@ -381,21 +381,51 @@
       <header class="testimonials-head">
         <p class="eyebrow">In their own words</p>
         <h2 class="testimonials-title">A garden you live in, not just look at.</h2>
-        <p class="testimonials-lede">A North Balwyn client on what changed once the garden was finished, and why they chose ANKS.</p>
+        <p class="testimonials-lede">Real clients on what changed once the garden was finished, and why they chose ANKS.</p>
       </header>
 
-      <div class="testimonials-video">
-        <video
-          controls
-          playsinline
-          preload="metadata"
-          poster="assets/pages/north-balwyn/videos/client-testimonial-poster.jpg"
-        >
-          <source src="https://pub-e0d001739d794a7ba6f60f91603c9bc3.r2.dev/client-testimonial.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <!-- TODO: replace "North Balwyn client" with the actual client's first name once Alex confirms. -->
-        <p class="testimonials-video-cap">North Balwyn residence &middot; 5:46</p>
+      <div class="testimonials-stage" id="testimonials-stage">
+        <article class="testimonial-card is-active" data-name="North Balwyn" data-role="Residential">
+          <div class="testimonial-card-media">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="assets/pages/north-balwyn/videos/client-testimonial-poster.jpg"
+            >
+              <source src="https://pub-e0d001739d794a7ba6f60f91603c9bc3.r2.dev/client-testimonial.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="testimonial-card-meta">
+            <p class="testimonial-card-name">North Balwyn</p>
+            <p class="testimonial-card-role">Residential &middot; 5:46</p>
+          </div>
+          <span class="testimonial-card-label" aria-hidden="true">North Balwyn</span>
+          <span class="testimonial-card-cue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </article>
+
+        <article class="testimonial-card" data-name="Sunbury Mansion" data-role="Premium residential">
+          <div class="testimonial-card-media">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="assets/pages/sunbury-mansion/videos/testimonial-poster.jpg"
+            >
+              <source src="https://pub-e0d001739d794a7ba6f60f91603c9bc3.r2.dev/testimonial.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="testimonial-card-meta">
+            <p class="testimonial-card-name">Sunbury Mansion</p>
+            <p class="testimonial-card-role">Premium residential</p>
+          </div>
+          <span class="testimonial-card-label" aria-hidden="true">Sunbury Mansion</span>
+          <span class="testimonial-card-cue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </article>
       </div>
     </div>
   </section>
