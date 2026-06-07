@@ -133,11 +133,11 @@
   const fpSoundToggle = document.getElementById('fp-sound-toggle');
   const FP_MUTE_KEY = 'anks-fp-muted';
 
-  // Default: sound on. Stored preference (if any) overrides.
-  let fpMuted = false;
+  // Default: sound off. Stored preference (if any) overrides.
+  let fpMuted = true;
   try {
     const stored = sessionStorage.getItem(FP_MUTE_KEY);
-    if (stored === 'true') fpMuted = true;
+    if (stored === 'false') fpMuted = false;
   } catch (e) { /* sessionStorage unavailable, ignore */ }
 
   function updateSoundToggleUI() {
