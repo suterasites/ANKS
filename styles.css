@@ -689,11 +689,11 @@ em {
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 400;
-  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-size: clamp(0.88rem, 0.95vw, 0.98rem);
   line-height: 1.55;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 760px;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 680px;
 }
 
 @media (max-width: 960px) {
