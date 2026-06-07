@@ -683,9 +683,23 @@ em {
   max-width: 320px;
 }
 
+.hero-band-statement {
+  margin-top: 2.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 760px;
+}
+
 @media (max-width: 960px) {
   .hero-features { grid-template-columns: 1fr; gap: 1.5rem; }
   .hero-band-line { margin-bottom: 1.5rem; }
+  .hero-band-statement { margin-top: 2rem; padding-top: 1.5rem; }
 }
 
 /* ============ APPROACH (TIMELINE) ============ */
