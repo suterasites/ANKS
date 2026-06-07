@@ -1474,16 +1474,19 @@ em {
   margin-top: 2rem;
   padding-top: 1.75rem;
   border-top: 1px solid var(--rule);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  column-gap: 2rem;
+  row-gap: 1.5rem;
 }
 .git-contact li {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.4rem;
   font-size: 0.95rem;
   color: var(--ink);
+  line-height: 1.45;
 }
 .git-contact li span {
   font-size: 0.68rem;
@@ -1491,12 +1494,42 @@ em {
   text-transform: uppercase;
   color: var(--ink-mute);
 }
+.git-contact > li:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
+.git-contact > li:nth-child(2) { grid-column: 2; grid-row: 1; }
+.git-contact > li:nth-child(3) { grid-column: 2; grid-row: 2; }
+.git-contact > li:nth-child(4) { grid-column: 3; grid-row: 1; }
+.git-contact > li:nth-child(5) { grid-column: 3; grid-row: 2; }
 .git-contact li.git-contact-wide {
-  flex-basis: 100%;
-  max-width: 100%;
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
 }
 .git-contact a { transition: color var(--transition); }
 .git-contact a:hover { color: var(--terracotta); }
+
+@media (max-width: 720px) {
+  .git-contact {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.25rem;
+  }
+  .git-contact > li:nth-child(1),
+  .git-contact > li:nth-child(2),
+  .git-contact > li:nth-child(3),
+  .git-contact > li:nth-child(4),
+  .git-contact > li:nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .git-contact li.git-contact-wide {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+@media (max-width: 480px) {
+  .git-contact { grid-template-columns: 1fr; }
+}
 
 .git-media {
   border-radius: 16px;
