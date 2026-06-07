@@ -828,17 +828,7 @@ em {
 .service-card-veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 18, 14, 0.5) 0%, transparent 32%, transparent 50%, rgba(20, 18, 14, 0.85) 100%);
-}
-.service-card-title {
-  position: absolute;
-  top: clamp(1.5rem, 3vw, 2.5rem);
-  left: clamp(1.5rem, 3vw, 2.5rem);
-  z-index: 1;
-  color: #fff;
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(20, 18, 14, 0.55) 55%, rgba(20, 18, 14, 0.92) 100%);
 }
 .service-card-foot {
   position: absolute;
@@ -847,16 +837,24 @@ em {
   bottom: 0;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+}
+.service-card-title {
+  color: #fff;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
 }
 .service-card-caption {
-  color: #fff;
-  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
-  line-height: 1.45;
-  max-width: 400px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(0.92rem, 1.1vw, 1rem);
+  line-height: 1.5;
+  max-width: 620px;
+  margin: 0;
 }
 .service-pill {
   flex-shrink: 0;
@@ -908,7 +906,7 @@ em {
 @media (max-width: 700px) {
   .services-track { padding: 0.5rem 8%; }
   .service-card { flex: 0 0 84%; aspect-ratio: 4 / 5; }
-  .service-card-foot { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .service-card-foot { gap: 0.75rem; }
 }
 
 /* ============ PROJECTS (FEATURED) ============ */
