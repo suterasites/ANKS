@@ -179,13 +179,12 @@
     const video = card.querySelector('.fp-img-video');
     if (!video) return;
 
-    // Desktop: hover plays
+    // Desktop: hover plays. Pause on leave, but keep position so re-hover resumes.
     card.addEventListener('mouseenter', () => {
       playFpVideo(video);
     });
     card.addEventListener('mouseleave', () => {
       video.pause();
-      try { video.currentTime = 0; } catch (e) { /* ignore */ }
     });
 
     // Touch: first tap plays the preview, taps elsewhere stop it.
