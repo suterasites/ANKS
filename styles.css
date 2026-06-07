@@ -1425,7 +1425,7 @@ em {
 .git-star { color: var(--ochre); flex-shrink: 0; }
 
 .git-form { display: flex; flex-direction: column; gap: 0.85rem; }
-.git-form input, .git-form textarea {
+.git-form input, .git-form textarea, .git-form select {
   width: 100%;
   padding: 1.05rem 1.25rem;
   font-family: inherit;
@@ -1437,12 +1437,24 @@ em {
   transition: border-color var(--transition), background var(--transition);
 }
 .git-form input::placeholder, .git-form textarea::placeholder { color: var(--ink-mute); }
-.git-form input:focus, .git-form textarea:focus {
+.git-form input:focus, .git-form textarea:focus, .git-form select:focus {
   outline: none;
   background: var(--paper);
   border-color: var(--ink-mute);
 }
 .git-form textarea { resize: vertical; min-height: 120px; }
+.git-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%236b6a64' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+.git-form select:invalid { color: var(--ink-mute); }
+.git-form select option { color: var(--ink); }
 .git-submit {
   margin-top: 0.4rem;
   padding: 1.1rem 1.5rem;
@@ -1478,6 +1490,10 @@ em {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-mute);
+}
+.git-contact li.git-contact-wide {
+  flex-basis: 100%;
+  max-width: 100%;
 }
 .git-contact a { transition: color var(--transition); }
 .git-contact a:hover { color: var(--terracotta); }

@@ -27,13 +27,13 @@
   "email": "info@anks.com.au",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "5 Webb Ct",
-    "addressLocality": "Epping",
+    "streetAddress": "South Mountain Road",
+    "addressLocality": "Upper Plenty",
     "addressRegion": "VIC",
-    "postalCode": "3076",
+    "postalCode": "3756",
     "addressCountry": "AU"
   },
-  "areaServed": ["Toorak", "South Yarra", "Hawthorn", "Kew", "Camberwell", "Malvern", "Armadale", "Brighton"],
+  "areaServed": ["Melbourne", "Regional Victoria", "Murray Region", "Echuca", "Moama"],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
@@ -598,8 +598,8 @@
         </span>
 
         <div class="git-head">
-          <h2 class="git-title">Get in touch</h2>
-          <p class="git-tagline">Considered landscapes across Melbourne, residential and commercial.</p>
+          <h2 class="git-title">Book a Consultation</h2>
+          <p class="git-tagline">Whether you are building an architectural home, delivering a commercial project or managing a residential development, our team can guide your project from concept to completion.</p>
         </div>
 
         <div class="git-grid">
@@ -610,18 +610,37 @@
             </p>
             <form class="git-form" method="POST" action="https://formspree.io/f/xeevwdog">
               <input type="hidden" name="_subject" value="New project enquiry (ANKS)" />
-              <input type="text" name="name" placeholder="Full name*" aria-label="Full name" required />
-              <input type="email" name="email" placeholder="Email*" aria-label="Email" required />
-              <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
-              <input type="text" name="suburb" placeholder="Project suburb" aria-label="Project suburb" />
-              <textarea name="message" rows="4" placeholder="About the project*" aria-label="About the project" required></textarea>
-              <button type="submit" class="git-submit">Leave a request</button>
+              <input type="text" name="name" placeholder="Full name *" aria-label="Full name" required />
+              <input type="email" name="email" placeholder="Email *" aria-label="Email" required />
+              <input type="tel" name="phone" placeholder="Phone *" aria-label="Phone" required />
+              <input type="text" name="location" placeholder="Project location *" aria-label="Project location" required />
+              <select name="project_type" aria-label="Project type" required>
+                <option value="" disabled selected hidden>Project type *</option>
+                <option>Architectural home</option>
+                <option>Commercial project</option>
+                <option>Builder / developer</option>
+                <option>New home owner</option>
+                <option>Recently renovated property</option>
+              </select>
+              <select name="budget" aria-label="Estimated project budget" required>
+                <option value="" disabled selected hidden>Estimated project budget *</option>
+                <option>Under $25,000</option>
+                <option>$25,000 - $50,000</option>
+                <option>$50,000 - $100,000</option>
+                <option>$100,000 - $250,000</option>
+                <option>$250,000+</option>
+              </select>
+              <textarea name="message" rows="4" placeholder="Tell us about your project *" aria-label="Tell us about your project" required></textarea>
+              <button type="submit" class="git-submit">Book Consultation</button>
             </form>
 
             <ul class="git-contact">
+              <li><span>Contact</span>Alexander Stojceski<br />ANKS Construction &amp; Landscaping</li>
               <li><span>Phone</span><a href="tel:+61401500778">0401 500 778</a></li>
               <li><span>Email</span><a href="mailto:info@anks.com.au">info@anks.com.au</a></li>
-              <li><span>Office</span>5 Webb Ct, Epping VIC 3076</li>
+              <li><span>Melbourne office</span>South Mountain Road<br />Upper Plenty VIC 3756</li>
+              <li><span>Murray region office</span>Moama NSW 2731</li>
+              <li class="git-contact-wide"><span>Service area</span>Servicing Melbourne &amp; Regional Victoria. Now also servicing the Murray region, Echuca, Moama and surrounding suburbs.</li>
             </ul>
           </div>
 
@@ -684,7 +703,7 @@
     <div class="footer-base">
       <p class="footer-copyright">&copy; <span id="year">2026</span> ANKS Construction and Landscaping</p>
       <p class="footer-base-right">
-        <span>5 Webb Ct, Epping VIC 3076</span>
+        <span>South Mountain Road, Upper Plenty VIC 3756 &middot; Moama NSW 2731</span>
         <span>Website by <a href="https://suterasites.com.au" target="_blank" rel="noopener">Sutera Sites</a></span>
       </p>
     </div>
