@@ -936,6 +936,45 @@ em {
 }
 .featured-link:hover { color: var(--terracotta); }
 
+.featured-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.fp-sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.fp-sound-toggle:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.fp-sound-icon { display: inline-flex; align-items: center; justify-content: center; }
+.fp-sound-toggle .fp-sound-off { display: none; }
+.fp-sound-toggle[aria-pressed="true"] .fp-sound-on { display: none; }
+.fp-sound-toggle[aria-pressed="true"] .fp-sound-off { display: inline-flex; }
+.fp-sound-toggle[aria-pressed="true"] {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+.fp-sound-toggle[aria-pressed="true"]:hover {
+  background: var(--terracotta);
+  color: var(--paper);
+}
+
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -130,6 +130,50 @@
   // Featured Projects hover-preview videos
   const isTouch = window.matchMedia('(hover: none)').matches;
   const fpCards = Array.from(document.querySelectorAll('.fp-card'));
+  const fpSoundToggle = document.getElementById('fp-sound-toggle');
+  const FP_MUTE_KEY = 'anks-fp-muted';
+
+  // Default: sound on. Stored preference (if any) overrides.
+  let fpMuted = false;
+  try {
+    const stored = sessionStorage.getItem(FP_MUTE_KEY);
+    if (stored === 'true') fpMuted = true;
+  } catch (e) { /* sessionStorage unavailable, ignore */ }
+
+  function updateSoundToggleUI() {
+    if (!fpSoundToggle) return;
+    fpSoundToggle.setAttribute('aria-pressed', fpMuted ? 'true' : 'false');
+    fpSoundToggle.setAttribute('aria-label', fpMuted ? 'Unmute project videos' : 'Mute project videos');
+    const label = fpSoundToggle.querySelector('.fp-sound-label');
+    if (label) label.textContent = fpMuted ? 'Sound off' : 'Sound on';
+  }
+  updateSoundToggleUI();
+
+  function playFpVideo(video) {
+    video.muted = fpMuted;
+    const p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => {
+        // Browser rejected unmuted autoplay (no user gesture yet). Fall back to muted.
+        video.muted = true;
+        const fallback = video.play();
+        if (fallback && typeof fallback.catch === 'function') fallback.catch(() => {});
+      });
+    }
+  }
+
+  if (fpSoundToggle) {
+    fpSoundToggle.addEventListener('click', () => {
+      fpMuted = !fpMuted;
+      try { sessionStorage.setItem(FP_MUTE_KEY, String(fpMuted)); } catch (e) { /* ignore */ }
+      updateSoundToggleUI();
+      // Apply to any currently playing video so the toggle is immediate.
+      fpCards.forEach((c) => {
+        const v = c.querySelector('.fp-img-video');
+        if (v && !v.paused) v.muted = fpMuted;
+      });
+    });
+  }
 
   fpCards.forEach((card) => {
     const video = card.querySelector('.fp-img-video');
@@ -137,8 +181,7 @@
 
     // Desktop: hover plays
     card.addEventListener('mouseenter', () => {
-      const p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
+      playFpVideo(video);
     });
     card.addEventListener('mouseleave', () => {
       video.pause();
@@ -167,8 +210,7 @@
         try { video.currentTime = 0; } catch (err) { /* ignore */ }
       } else {
         card.classList.add('is-touch-active');
-        const p = video.play();
-        if (p && typeof p.catch === 'function') p.catch(() => {});
+        playFpVideo(video);
       }
     });
   });
