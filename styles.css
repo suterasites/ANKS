@@ -1826,6 +1826,13 @@ em {
   grid-row: span 2;
   aspect-ratio: 16 / 11;
 }
+.pg-fig-hero:has(video) {
+  aspect-ratio: auto;
+}
+.pg-fig-hero:has(video) video {
+  position: absolute;
+  inset: 0;
+}
 .pg-fig-side {
   grid-column: 3;
   grid-row: span 2;
