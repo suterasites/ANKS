@@ -1667,6 +1667,7 @@ em {
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.5rem, 2.5vw, 2.25rem);
 }
+.pi-grid-pair { grid-template-columns: repeat(2, 1fr); gap: clamp(2rem, 3vw, 3rem); }
 .pi-card {
   display: flex;
   flex-direction: column;
