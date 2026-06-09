@@ -1826,6 +1826,11 @@ em {
   grid-row: span 2;
   aspect-ratio: 16 / 11;
 }
+.pg-fig-side {
+  grid-column: 3;
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
 .pg-fig figcaption {
   position: absolute;
   bottom: 0.85rem;
@@ -1843,10 +1848,12 @@ em {
 @media (max-width: 760px) {
   .project-gallery { grid-template-columns: repeat(2, 1fr); }
   .pg-fig-hero { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 10; }
+  .pg-fig-side { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 10; }
 }
 @media (max-width: 480px) {
   .project-gallery { grid-template-columns: 1fr; }
   .pg-fig-hero { grid-column: 1; aspect-ratio: 4 / 3; }
+  .pg-fig-side { grid-column: 1; aspect-ratio: 4 / 3; }
 }
 
 /* ============ HEADER - STATIC VARIANT (internal pages) ============ */
