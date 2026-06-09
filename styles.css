@@ -1829,7 +1829,7 @@ em {
 .pg-fig-side {
   grid-column: 3;
   grid-row: span 2;
-  aspect-ratio: auto;
+  aspect-ratio: 8 / 11;
 }
 .pg-fig figcaption {
   position: absolute;
