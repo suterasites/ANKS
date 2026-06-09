@@ -585,6 +585,15 @@ em {
 .hero-copy {
   max-width: 720px;
 }
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ochre);
+  margin-bottom: 1.5rem;
+}
 .hero-headline {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 500;
