@@ -100,11 +100,8 @@
     if (next) next.addEventListener('click', () => scrollToCard(activeIndex() + 1));
 
     cards.forEach((c, i) => {
-      c.addEventListener('click', (e) => {
-        if (i !== activeIndex()) {
-          e.preventDefault();
-          scrollToCard(i);
-        }
+      c.addEventListener('click', () => {
+        if (i !== activeIndex()) scrollToCard(i);
       });
     });
 
