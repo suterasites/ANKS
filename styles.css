@@ -2296,25 +2296,26 @@ em {
   max-width: 760px;
 }
 
-.testimonial-section .ts-inner {
-  max-width: 980px;
+.ts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
 }
-.ts-head {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-}
+.ts-grid-reverse .ts-text { order: 2; }
+.ts-grid-reverse .ts-media { order: 1; }
 .ts-title {
   font-size: clamp(1.85rem, 3.4vw, 2.75rem);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.15;
   color: var(--ink);
-  margin: 0.5rem 0 1rem;
+  margin: 0.75rem 0 1.25rem;
 }
 .ts-lede {
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   line-height: 1.65;
   color: var(--ink-soft);
-  max-width: 720px;
   margin: 0;
 }
 .ts-media {
@@ -2329,6 +2330,13 @@ em {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+@media (max-width: 960px) {
+  .ts-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .ts-grid .ts-media { order: -1; }
+  .ts-grid-reverse .ts-text { order: 2; }
+  .ts-grid-reverse .ts-media { order: 1; }
 }
 
 .reviews-widget-placeholder {
