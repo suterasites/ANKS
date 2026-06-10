@@ -2296,6 +2296,41 @@ em {
   max-width: 760px;
 }
 
+.testimonial-section .ts-inner {
+  max-width: 980px;
+}
+.ts-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.ts-title {
+  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0.5rem 0 1rem;
+}
+.ts-lede {
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0;
+}
+.ts-media {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--ink);
+  aspect-ratio: 16 / 9;
+}
+.ts-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .reviews-widget-placeholder {
   display: flex;
   flex-direction: column;
