@@ -824,6 +824,9 @@ em {
   background: var(--sand);
   opacity: 0.5;
   transition: opacity var(--transition);
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 .service-card.is-active { opacity: 1; }
 .service-card:not(.is-active) { cursor: pointer; }
