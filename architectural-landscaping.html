@@ -457,7 +457,7 @@
           <div class="git-form-col">
             <p class="git-label">
               <svg class="git-star" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2l1.6 6.8L20 6l-4.8 5.2L22 13l-7 .8L17 21l-5-4.4L7 21l2-7.2-7-.8 6.8-1.8L4 6l6.4 2.8z"/></svg>
-              Tell us about your project
+              Fill out the form
             </p>
             <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-lp-form">
               <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
@@ -465,17 +465,25 @@
               <input type="text" name="name" placeholder="Full name *" aria-label="Full name" required />
               <input type="email" name="email" placeholder="Email *" aria-label="Email" required />
               <input type="tel" name="phone" placeholder="Phone *" aria-label="Phone" required />
-              <input type="text" name="location" placeholder="Project suburb *" aria-label="Project suburb" required />
+              <input type="text" name="location" placeholder="Project location *" aria-label="Project location" required />
               <select name="project_type" aria-label="Project type" required>
                 <option value="" disabled selected hidden>Project type *</option>
-                <option>New architectural home</option>
-                <option>Renovation / extension</option>
-                <option>Existing home, new landscape</option>
-                <option>Working with an architect / designer</option>
-                <option>Builder / developer project</option>
+                <option>Architectural home</option>
+                <option>Commercial project</option>
+                <option>Builder / developer</option>
+                <option>New home owner</option>
+                <option>Recently renovated property</option>
+              </select>
+              <select name="budget" aria-label="Estimated project budget" required>
+                <option value="" disabled selected hidden>Estimated project budget *</option>
+                <option>Under $25,000</option>
+                <option>$25,000 - $50,000</option>
+                <option>$50,000 - $100,000</option>
+                <option>$100,000 - $250,000</option>
+                <option>$250,000+</option>
               </select>
               <textarea name="message" rows="4" placeholder="Tell us about your project *" aria-label="Tell us about your project" required></textarea>
-              <button type="submit" class="git-submit">Request Consultation</button>
+              <button type="submit" class="git-submit">Book Consultation</button>
             </form>
             <p class="git-thankyou" id="anks-lp-thankyou" hidden>
               Thank you. Your enquiry is in. We will be in touch shortly, usually the same day. For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
