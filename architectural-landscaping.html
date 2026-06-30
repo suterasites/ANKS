@@ -71,10 +71,11 @@
     'phone_conversion_number': '0401 500 778'
   });
 
-  /* Fired on successful form submit (see inline script at end of body) */
+  /* Fired once on successful form submit (see inline script at end of body).
+     Single conversion event only - no generate_lead (it double-counted the
+     "Submit lead form" action in testing 2026-06-30). */
   function anksReportFormConversion() {
     gtag('event', 'conversion', { 'send_to': 'AW-18282196444/_A6dCPKUiMgcENzb0I1E' });
-    gtag('event', 'generate_lead', { 'form': 'architectural-landscaping-lp' });
   }
 </script>
 </head>
