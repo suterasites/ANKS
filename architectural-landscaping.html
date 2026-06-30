@@ -19,7 +19,12 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- Async-load fonts so they don't block first render (display=swap paints fallback first, then swaps to Inter) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+<!-- Preload the LCP hero image so it starts downloading immediately -->
+<link rel="preload" as="image" href="assets/pages/north-balwyn/photos/north-balwyn-hero-lp.jpg" fetchpriority="high" />
 
 <link rel="stylesheet" href="styles.css" />
 
@@ -106,7 +111,7 @@
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
-      <img src="assets/pages/north-balwyn/photos/north-balwyn-modern-house-rear-garden.jpeg" alt="" />
+      <img src="assets/pages/north-balwyn/photos/north-balwyn-hero-lp.jpg" alt="" width="804" height="1000" fetchpriority="high" decoding="async" />
       <div class="hero-veil"></div>
     </div>
 
@@ -546,7 +551,7 @@
 <div class="elfsight-app-78897870-15c6-406e-ab78-a98d722f8e98" data-elfsight-app-lazy></div>
 <script src="https://elfsightcdn.com/platform.js" async></script>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 <script>
   /* Year stamp (defensive - script.js also sets it) */
   (function () {
