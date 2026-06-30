@@ -49,12 +49,11 @@
 
 <!-- ============================================================= -->
 <!-- Google tag (gtag.js) - Google Ads conversion tracking         -->
-<!-- Base tag AW-18282196444 wired 2026-06-30.                     -->
-<!-- STILL TO DO before launch: replace FORM_LABEL and CALL_LABEL  -->
-<!--   below with the conversion labels from each Google Ads       -->
-<!--   conversion action (Tools > Conversions > [action] > event   -->
-<!--   snippet -> the value after the slash in send_to:            -->
-<!--   AW-18282196444/XXXXXXXX).                                   -->
+<!-- Base tag AW-18282196444. Both conversions wired 2026-06-30:   -->
+<!--   - Form submit  -> event snippet (fires on AJAX success)     -->
+<!--   - Website call -> phone_conversion_number (Google swaps the -->
+<!--     displayed number with a tracking forwarding number for ad -->
+<!--     visitors and counts completed calls).                     -->
 <!-- (GA4 optional: add a second gtag('config','G-...') line.)     -->
 <!-- Do NOT launch until form + call test-fire OK.                 -->
 <!-- ============================================================= -->
@@ -65,14 +64,17 @@
   gtag('js', new Date());
   gtag('config', 'AW-18282196444');   /* Google Ads */
 
+  /* Website-call conversion. Google dynamically replaces the displayed
+     0401 500 778 with a tracking forwarding number for ad visitors and
+     records completed calls. The on-page number text must match exactly. */
+  gtag('config', 'AW-18282196444/TwU-CMq588ccENzb0I1E', {
+    'phone_conversion_number': '0401 500 778'
+  });
+
   /* Fired on successful form submit (see inline script at end of body) */
   function anksReportFormConversion() {
     gtag('event', 'conversion', { 'send_to': 'AW-18282196444/_A6dCPKUiMgcENzb0I1E' });
     gtag('event', 'generate_lead', { 'form': 'architectural-landscaping-lp' });
-  }
-  /* Fired on any click-to-call */
-  function anksReportCallConversion() {
-    gtag('event', 'conversion', { 'send_to': 'AW-18282196444/CALL_LABEL' });
   }
 </script>
 </head>
@@ -583,16 +585,6 @@
         alert('Something went wrong sending your enquiry. Please call 0401 500 778.');
       });
     });
-  })();
-
-  /* Click-to-call conversion */
-  (function () {
-    var telLinks = document.querySelectorAll('a[href^="tel:"]');
-    for (var i = 0; i < telLinks.length; i++) {
-      telLinks[i].addEventListener('click', function () {
-        if (typeof anksReportCallConversion === 'function') anksReportCallConversion();
-      });
-    }
   })();
 </script>
 </body>
