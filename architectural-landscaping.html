@@ -48,29 +48,31 @@
 </style>
 
 <!-- ============================================================= -->
-<!-- Google tag (gtag.js) - GA4 + Google Ads conversion tracking   -->
-<!-- TODO(James): replace the 3 placeholders below AFTER you       -->
-<!--   1. create the GA4 property  -> GA_MEASUREMENT_ID            -->
-<!--   2. create the Google Ads conversion actions in the new      -->
-<!--      account -> AW-CONVERSION_ID + the two /LABEL values      -->
-<!-- Do NOT launch the campaign until form + call test-fire OK.    -->
+<!-- Google tag (gtag.js) - Google Ads conversion tracking         -->
+<!-- Base tag AW-18282196444 wired 2026-06-30.                     -->
+<!-- STILL TO DO before launch: replace FORM_LABEL and CALL_LABEL  -->
+<!--   below with the conversion labels from each Google Ads       -->
+<!--   conversion action (Tools > Conversions > [action] > event   -->
+<!--   snippet -> the value after the slash in send_to:            -->
+<!--   AW-18282196444/XXXXXXXX).                                   -->
+<!-- (GA4 optional: add a second gtag('config','G-...') line.)     -->
+<!-- Do NOT launch until form + call test-fire OK.                 -->
 <!-- ============================================================= -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18282196444"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');   /* GA4 */
-  gtag('config', 'AW-CONVERSION_ID');    /* Google Ads */
+  gtag('config', 'AW-18282196444');   /* Google Ads */
 
   /* Fired on successful form submit (see inline script at end of body) */
   function anksReportFormConversion() {
-    gtag('event', 'conversion', { 'send_to': 'AW-CONVERSION_ID/FORM_LABEL' });
+    gtag('event', 'conversion', { 'send_to': 'AW-18282196444/FORM_LABEL' });
     gtag('event', 'generate_lead', { 'form': 'architectural-landscaping-lp' });
   }
   /* Fired on any click-to-call */
   function anksReportCallConversion() {
-    gtag('event', 'conversion', { 'send_to': 'AW-CONVERSION_ID/CALL_LABEL' });
+    gtag('event', 'conversion', { 'send_to': 'AW-18282196444/CALL_LABEL' });
   }
 </script>
 </head>
