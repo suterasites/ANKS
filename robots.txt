@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://anks.com.au/sitemap.xml
