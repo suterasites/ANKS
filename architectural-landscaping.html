@@ -69,12 +69,30 @@
   gtag('js', new Date());
   gtag('config', 'AW-18282196444');   /* Google Ads */
 
-  /* Website-call conversion. Google dynamically replaces the displayed
-     0401 500 778 with a tracking forwarding number for ad visitors and
-     records completed calls. The on-page number text must match exactly. */
-  gtag('config', 'AW-18282196444/TwU-CMq588ccENzb0I1E', {
-    'phone_conversion_number': '0401 500 778'
+  /* CALL conversion = click-to-call (tap on the tel: link). Fires immediately
+     on tap, so it is testable and reliable on this mobile tap-to-call LP.
+     Replaces the forwarding-number approach below, which never produced a
+     verifiable conversion - it only counts completed calls from ad visitors
+     after Google provisions + swaps a forwarding number, so it cannot be tested
+     by tapping and left the account on 0 tracked calls. Changed 2026-07-07. */
+  function anksReportCallConversion() {
+    gtag('event', 'conversion', { 'send_to': 'AW-18282196444/wDVACM2588ccENzb0I1E' });
+  }
+  /* Delegated so it covers every tel: link on the page. */
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if (link) anksReportCallConversion();
   });
+
+  /* Forwarding-number website-call conversion - DORMANT. The config below is
+     intentionally disabled so Google no longer swaps the number and this action
+     cannot double-count the click-to-call above. Restore it only if you switch
+     back to completed-call tracking, and then set exactly ONE of the two call
+     actions to Include-in-Conversions = Yes in Google Ads.
+     gtag('config', 'AW-18282196444/TwU-CMq588ccENzb0I1E', {
+       'phone_conversion_number': '0401 500 778'
+     });
+  */
 
   /* Fired once on successful form submit (see inline script at end of body).
      Single conversion event only - no generate_lead (it double-counted the
