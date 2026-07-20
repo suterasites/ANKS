@@ -18,11 +18,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png" />
 <meta name="theme-color" content="#C99404" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!-- Async-load fonts so they don't block first render (display=swap paints fallback first, then swaps to Inter) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+<!-- Self-hosted Inter (woff2, latin) - no third-party font origin, no render-block, no FOUT swap.
+     Body weight (400) + headline weight (700) are preloaded; 500/600 fetch on demand. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-400-normal.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-700-normal.woff2" crossorigin />
+<style>
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/inter-latin-500-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/inter-latin-700-normal.woff2') format('woff2'); }
+</style>
 
 <!-- Preload the LCP hero image so it starts downloading immediately -->
 <link rel="preload" as="image" href="assets/pages/north-balwyn/photos/north-balwyn-hero-lp.jpg" fetchpriority="high" />
@@ -593,9 +598,13 @@
   </div>
 </footer>
 
-<!-- Elfsight Google Reviews (floating badge) | ANKS - same widget as the main site -->
-<div class="elfsight-app-78897870-15c6-406e-ab78-a98d722f8e98" data-elfsight-app-lazy></div>
-<script src="https://elfsightcdn.com/platform.js" async></script>
+<!-- Elfsight floating Google Reviews badge intentionally NOT loaded on this paid LP.
+     On mobile the position:fixed widget sat over the enquiry form + CTA (a conversion blocker)
+     and its async DOM injection caused layout shift (CLS) that dragged the Google Ads Quality
+     Score landing-page-experience rating. Review proof is already on-page twice: the hero trust
+     line (5.0 / 28 Google reviews, gold stars) and the contact block below the form. The main
+     site keeps the widget - this omission is scoped to the ads landing page only. -->
+
 
 <script src="script.js" defer></script>
 <script>
