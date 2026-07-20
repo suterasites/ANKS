@@ -69,6 +69,11 @@
     padding: 1.1rem 1.25rem;
   }
   .git-thankyou a { color: var(--terracotta); font-weight: 600; }
+  /* Inline Google-reviews section. Reserve height so the lazy Elfsight widget cannot shift
+     surrounding content while it loads (keeps CLS near zero). Tune the min-height to the
+     widget's real rendered height once live if it leaves a visible gap. */
+  .reviews-embed { min-height: 440px; }
+  @media (max-width: 640px) { .reviews-embed { min-height: 560px; } }
 </style>
 
 <!-- ============================================================= -->
@@ -499,6 +504,21 @@
     </div>
   </section>
 
+  <!-- ===== GOOGLE REVIEWS (inline, in the content flow - NOT the floating badge) ===== -->
+  <section class="reviews section">
+    <div class="container">
+      <header class="credentials-head">
+        <p class="eyebrow">Client reviews</p>
+        <h2 class="credentials-title">In their words.</h2>
+      </header>
+      <!-- Inline Elfsight Google Reviews. Height is reserved on .reviews-embed so the lazy
+           async widget cannot shift the page as it loads (protects the CLS score). -->
+      <div class="reviews-embed">
+        <div class="elfsight-app-661946be-d772-4156-85d2-9cf55cc58f0d" data-elfsight-app-lazy></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ENQUIRE / ON-PAGE FORM (the conversion point) ===== -->
   <section class="get-in-touch" id="enquire">
     <div class="container">
@@ -598,13 +618,12 @@
   </div>
 </footer>
 
-<!-- Elfsight floating Google Reviews badge intentionally NOT loaded on this paid LP.
-     On mobile the position:fixed widget sat over the enquiry form + CTA (a conversion blocker)
-     and its async DOM injection caused layout shift (CLS) that dragged the Google Ads Quality
-     Score landing-page-experience rating. Review proof is already on-page twice: the hero trust
-     line (5.0 / 28 Google reviews, gold stars) and the contact block below the form. The main
-     site keeps the widget - this omission is scoped to the ads landing page only. -->
-
+<!-- Google Reviews: INLINE widget only (in the content flow, before the enquiry form).
+     The old position:fixed FLOATING badge was removed because on mobile it sat over the
+     enquiry form/CTA (a conversion blocker). This inline embed obstructs nothing; its height
+     is reserved via .reviews-embed so it does not shift the page (protects CLS), and it is
+     async + lazy so it never blocks first render. -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 
 <script src="script.js" defer></script>
 <script>
