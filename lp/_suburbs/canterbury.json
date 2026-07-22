@@ -1,0 +1,27 @@
+{
+  "name": "Canterbury",
+  "slug": "canterbury",
+  "postcode": "3126",
+  "lat": "-37.8232",
+  "lng": "145.0806",
+  "lastmod": "2026-07-22",
+  "neighbours": ["Camberwell", "Balwyn", "Surrey Hills", "Kew", "Hawthorn East", "Mont Albert"],
+  "hub_hero_lede": "Architectural landscape construction across Canterbury, from period gardens around Maling Road to contemporary rebuilds set into the suburb's established, leafy streets.",
+  "character_title": "Landscape that belongs to a Canterbury street.",
+  "character": [
+    "Canterbury is one of Melbourne's most prestigious and tightly-held eastern suburbs. Grand period homes sit on generous blocks under a canopy of mature elms and oaks, and heritage overlays are common. A landscape here works within a strong established character, whether it is restoring a period garden or settling a contemporary rebuild into a street that has looked the same for a century.",
+    "We deliver that with restraint. Levels, drainage and structure are resolved against the architecture and the existing trees from the first excavation. Hardscape and planting are chosen to sit comfortably with the era of the home and the leafiness around it. The result reads as though it was always there, not dropped in after the build."
+  ],
+  "where_lede": "Canterbury sits at the heart of our core service area, alongside Camberwell and Balwyn. We deliver across the surrounding established eastern suburbs.",
+  "service_angle": {
+    "custom-homes": "Period-sympathetic gardens and architectural rebuilds across Canterbury's heritage streets, where a landscape has to hold its own against grand frontages and a mature elm canopy.",
+    "commercial": "School, childcare and body-corporate grounds across the Canterbury and Camberwell area, delivered around live operations and heritage constraints.",
+    "builders-developers": "External works for custom builders on Canterbury's tightly-held blocks, sequenced and access-planned around established trees and heritage overlays."
+  },
+  "faqs": [
+    {
+      "q": "Can you work sympathetically with Canterbury's period homes and established trees?",
+      "a": "Yes. Much of Canterbury is heritage-sensitive, with significant established elms and oaks and period frontages. We plan access, levels and structure around tree-protection zones and overlay requirements, and detail hardscape and planting to sit comfortably with the era of the home rather than against it."
+    }
+  ]
+}

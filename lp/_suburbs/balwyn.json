@@ -1,0 +1,27 @@
+{
+  "name": "Balwyn",
+  "slug": "balwyn",
+  "postcode": "3103",
+  "lat": "-37.8093",
+  "lng": "145.0805",
+  "lastmod": "2026-07-22",
+  "neighbours": ["Balwyn North", "Camberwell", "Canterbury", "Kew", "Surrey Hills", "Mont Albert"],
+  "hub_hero_lede": "Architectural landscape construction across Balwyn, from knock-down-rebuild family homes in the Balwyn High zone to established gardens on the suburb's generous, leafy blocks.",
+  "character_title": "An outdoor environment to match the build.",
+  "character": [
+    "Balwyn is defined by its blocks and its rebuilds. The school zone has driven a steady wave of knock-down-rebuilds, and the suburb's generous, often north-facing blocks give a landscape real room to work. The brief here is usually a substantial contemporary family home that needs the outdoor environment to match, driveway, pool surrounds, level changes and planting resolved against the architecture.",
+    "We run that as one piece of work. Earthworks and retaining handle the level changes these blocks often carry, hardscape and structure are detailed against the home, and planting is chosen to establish well and give a new build the setting it was drawn for. One in-house team, from first excavation to final handover."
+  ],
+  "where_lede": "Balwyn sits at the centre of our core service area, alongside Balwyn North and Camberwell. We deliver across the surrounding eastern suburbs.",
+  "service_angle": {
+    "custom-homes": "Contemporary family homes and rebuilds across Balwyn's generous blocks, where the outdoor environment has to match a substantial architectural build.",
+    "commercial": "School, childcare and body-corporate grounds across the Balwyn area, delivered safely around live operations and public access.",
+    "builders-developers": "External works packages for custom builders on Balwyn's knock-down-rebuild blocks, with earthworks and retaining starting in parallel with the frame."
+  },
+  "faqs": [
+    {
+      "q": "Do you handle pools, retaining and level changes on Balwyn rebuild blocks?",
+      "a": "Yes. Many Balwyn blocks carry a fall and a substantial new build, so retaining, drainage and level changes are usually part of the brief. We resolve the earthworks and structure against the architectural levels from day one, so pool surrounds, terraces and driveways sit correctly and drain properly rather than being reworked at the end."
+    }
+  ]
+}

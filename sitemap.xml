@@ -65,7 +65,28 @@
   </url>
 
 
+
   <!-- LP:START -->
+  <url>
+    <loc>https://anks.com.au/landscaping-balwyn</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/custom-homes-balwyn</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-balwyn</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-balwyn</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://anks.com.au/landscaping-camberwell</loc>
     <lastmod>2026-07-22</lastmod>
@@ -83,6 +104,26 @@
   </url>
   <url>
     <loc>https://anks.com.au/builders-developers-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/landscaping-canterbury</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/custom-homes-canterbury</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-canterbury</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-canterbury</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.7</priority>
   </url>

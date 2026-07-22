@@ -4,9 +4,9 @@ Local-SEO buildout: each target suburb gets **4 pages** - a suburb hub plus 3 se
 (Custom Homes, Commercial, Builders & Developers). Generated from `lp/_suburbs/<slug>.json`
 via `python3 .build/lp_render.py`, then `python3 .build/linkify_footer_suburbs.py`.
 
-**Status (2026-07-22):** Camberwell built as the approval sample. Remaining 11 suburbs are on
-hold pending James's sign-off on the template. Suburb LPs sit in the Premium tier of ANKS's
-original quote (beyond the base $1,500 scope) - confirm commercial arrangement before batching.
+**Status (2026-07-22):** Template APPROVED by James. Camberwell, Canterbury and Balwyn live
+(3 suburbs, 12 pages). Remaining 9 suburbs batching per the cadence below. Suburb LPs sit in
+the Premium tier of ANKS's original quote (beyond the base $1,500) - billing to confirm.
 
 ## Rules (hard)
 
@@ -37,23 +37,23 @@ finishing each suburb's 3 service pages as you go. At that rate the 11 remaining
 
 | Date | Suburb | Pages |
 |------|--------|-------|
-| 2026-07-22 | Camberwell | landscaping / custom-homes / commercial / builders-developers (SAMPLE, pending approval) |
+| 2026-07-22 | Camberwell | hub + custom-homes + commercial + builders-developers (approved template) |
+| 2026-07-22 | Canterbury | hub + custom-homes + commercial + builders-developers |
+| 2026-07-22 | Balwyn | hub + custom-homes + commercial + builders-developers |
 
 ## Queue (priority order - sweet-spot core first)
 
 | # | Suburb | Slug | Notes |
 |---|--------|------|-------|
-| 1 | Canterbury | canterbury | Core six. Period + architect rebuilds. |
-| 2 | Balwyn | balwyn | Core six. |
-| 3 | Kew | kew | Core six. |
-| 4 | Hawthorn | hawthorn | Core six. |
-| 5 | Brighton | brighton | Core six. Bayside, distinct character from the eastern suburbs. |
-| 6 | Balwyn North | balwyn-north | Has a real ANKS project - use the honest local-proof block here. |
-| 7 | Brighton East | brighton-east | Bayside. |
-| 8 | Glen Iris | glen-iris | |
-| 9 | Malvern | malvern | |
-| 10 | South Yarra | south-yarra | Denser, more apartment/townhouse - weight commercial/builders angle. |
-| 11 | Toorak | toorak | Premium, but NOT the ultra-mega segment; keep to the $2m-$8m register. |
+| 1 | Kew | kew | Core six. |
+| 2 | Hawthorn | hawthorn | Core six. |
+| 3 | Brighton | brighton | Core six. Bayside, distinct character from the eastern suburbs. |
+| 4 | Balwyn North | balwyn-north | Has a real ANKS project - use the honest local-proof block here. |
+| 5 | Brighton East | brighton-east | Bayside. |
+| 6 | Glen Iris | glen-iris | |
+| 7 | Malvern | malvern | |
+| 8 | South Yarra | south-yarra | Denser, more apartment/townhouse - weight commercial/builders angle. |
+| 9 | Toorak | toorak | Premium, but NOT the ultra-mega segment; keep to the $2m-$8m register. |
 
 Note: Balwyn North (#6) is the one suburb with a documented ANKS project (North Balwyn). When
 building it, add a genuine local-project block rather than the generic service-area framing.
