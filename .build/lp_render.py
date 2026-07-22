@@ -358,20 +358,9 @@ FOOTER = """
 """
 
 
-def breadcrumb(trail):
-    # trail: list of (label, href-or-None)
-    parts = []
-    for label, href in trail:
-        if href:
-            parts.append(f'<a href="{href}">{esc(label)}</a>')
-        else:
-            parts.append(f'<span aria-current="page">{esc(label)}</span>')
-    inner = '<span class="crumb-sep" aria-hidden="true">/</span>'.join(parts)
-    return f"""
-  <nav class="lp-breadcrumb" aria-label="Breadcrumb">
-    <div class="container">{inner}</div>
-  </nav>
-"""
+# Note: no visible breadcrumb strip. ANKS's design floats the fixed header over a full-bleed
+# hero (every other page does the same), and the hero eyebrow already signals the suburb.
+# The BreadcrumbList lives in the JSON-LD schema for SEO, not as an on-page element.
 
 
 # --------------------------------------------------------------------------- shared sections
@@ -590,7 +579,6 @@ def render_service_page(service_key, sub):
                geo=sub, schema=schema)
     doc += NAV
     doc += "\n<main>\n"
-    doc += breadcrumb([("Home", "index.html"), (cfg["short"].replace("&amp;", "and"), f"{service_key}.html"), (name, None)])
     # hero
     doc += f"""
   <section class="hero">
@@ -671,7 +659,6 @@ def render_hub_page(sub):
     doc = head(title=title, description=description, canonical=canonical, geo=sub, schema=schema)
     doc += NAV
     doc += "\n<main>\n"
-    doc += breadcrumb([("Home", "index.html"), ("Service areas", None), (name, None)])
     doc += f"""
   <section class="hero">
     <div class="hero-media" aria-hidden="true"><img src="assets/pages/north-balwyn/cover.jpeg" alt="" /><div class="hero-veil"></div></div>
