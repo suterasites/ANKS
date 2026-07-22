@@ -1,0 +1,27 @@
+{
+  "name": "Camberwell",
+  "slug": "camberwell",
+  "postcode": "3124",
+  "lat": "-37.8323",
+  "lng": "145.0585",
+  "lastmod": "2026-07-22",
+  "neighbours": ["Canterbury", "Balwyn", "Hawthorn East", "Glen Iris", "Surrey Hills", "Kew"],
+  "hub_hero_lede": "Architectural landscape construction across Camberwell, from heritage-fronted rebuilds near the Junction to contemporary homes on the leafy streets between Canterbury and Glen Iris.",
+  "character_title": "A garden that belongs on a Camberwell street.",
+  "character": [
+    "Camberwell is one of Melbourne's most established eastern suburbs, and its gardens carry that weight. Period frontages, deep blocks, mature canopy and heritage overlays sit alongside a steady run of architect-led rebuilds. A landscape here has to resolve the old and the new, holding the character of the street while giving a contemporary home the setting it was drawn for.",
+    "We deliver that as one piece of work. Levels, drainage and retaining are set against the architecture from the first excavation. Hardscape and planting are detailed against the materials of the home and the established trees around it. The result reads as though the garden was always part of the plan, not added once the builder left."
+  ],
+  "where_lede": "Camberwell sits at the centre of our core service area. We deliver across the surrounding eastern suburbs where architect and builder-led homes are most concentrated.",
+  "service_angle": {
+    "custom-homes": "Architectural rebuilds and heritage-sensitive gardens across Camberwell's established streets, where a new landscape has to sit comfortably against period frontages and mature canopy.",
+    "commercial": "Schools, childcare and body-corporate grounds across the Camberwell area, delivered around live operations and public access without disrupting the people who use the site.",
+    "builders-developers": "External works packages for custom builders working Camberwell's knock-down-rebuild blocks, sequenced so the landscape lands on practical completion week rather than chasing it."
+  },
+  "faqs": [
+    {
+      "q": "Do you handle heritage-overlay and established-tree constraints in Camberwell?",
+      "a": "Yes. Many Camberwell blocks carry heritage overlays and significant established trees. We plan levels, access and structure around tree-protection zones and overlay requirements, and coordinate with your arborist and consultants so the landscape is delivered without compromising protected features."
+    }
+  ]
+}

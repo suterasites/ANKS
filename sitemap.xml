@@ -63,4 +63,27 @@
     <lastmod>2026-07-06</lastmod>
     <priority>0.3</priority>
   </url>
+
+  <!-- LP:START -->
+  <url>
+    <loc>https://anks.com.au/landscaping-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/custom-homes-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <!-- LP:END -->
 </urlset>
