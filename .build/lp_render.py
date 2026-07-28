@@ -27,6 +27,8 @@ import html
 import json
 import os
 import re
+import subprocess
+import sys
 
 SITE = "https://anks.com.au"
 PHONE_DISPLAY = "0401 500 778"
@@ -782,6 +784,16 @@ def main():
 
     update_sitemap(sitemap_pages)
     print(f"[lp_render] updated sitemap.xml ({len(sitemap_pages)} LP url(s))")
+
+    # Post-process: apply the on-page SEO mechanical layer the templates don't carry
+    # (twitter card, skip-to-content link, <main id>, visible breadcrumb, real <img>
+    # dimensions). seo_100_patch.py is idempotent and is the single source of truth
+    # for these fixes, so regenerated pages stay checklist-compliant without the
+    # markup being duplicated here. See Apps/sutera-seo/checklist.py for the checks.
+    patch = os.path.join(os.path.dirname(os.path.abspath(__file__)), "seo_100_patch.py")
+    if os.path.isfile(patch):
+        subprocess.run([sys.executable, patch], check=False)
+        print("[lp_render] applied seo_100_patch.py")
 
 
 if __name__ == "__main__":

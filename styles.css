@@ -2471,3 +2471,43 @@ em {
   .cap-media { aspect-ratio: 16 / 10; }
   .suburbs-list { grid-template-columns: 1fr; }
 }
+
+/* ===== SEO / a11y: skip-to-content link + breadcrumb trail (added 2026-07-28) ===== */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  background: var(--ink);
+  color: #fff;
+  padding: .7rem 1.15rem;
+  border-radius: 0 0 8px 0;
+  font-size: .9rem;
+  text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+.breadcrumb {
+  background: var(--paper-deep);
+  border-bottom: 1px solid rgba(42, 38, 32, .08);
+}
+.breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem;
+  margin: 0;
+  padding: .8rem 0;
+  font-size: .82rem;
+}
+.breadcrumb li { color: var(--ink-mute); }
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: .45rem;
+  color: var(--ink-mute);
+  opacity: .5;
+}
+.breadcrumb a { color: var(--ink-mute); text-decoration: none; }
+.breadcrumb a:hover { color: var(--terracotta); }
+.breadcrumb [aria-current="page"] { color: var(--ink); font-weight: 500; }
