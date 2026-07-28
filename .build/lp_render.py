@@ -175,6 +175,14 @@ SERVICES = {
 
 SERVICE_ORDER = ["custom-homes", "commercial", "builders-developers"]
 
+# SEO <title> prefixes: tuned so "[prefix] in [Suburb] | ANKS Construction" lands
+# in the 50-60 char sweet spot the audit wants (the nav_label is too long for it).
+SEO_TITLE_PREFIX = {
+    "custom-homes": "Custom Home Landscapes",
+    "commercial": "Commercial Landscaping",
+    "builders-developers": "Builders & Developers",
+}
+
 
 # --------------------------------------------------------------------------- chrome
 
@@ -588,8 +596,13 @@ def render_service_page(service_key, sub):
     canonical = f"{SITE}/{slug}"
     name = sub["name"]
     label = nd(re.sub("&amp;", "and", cfg["nav_label"]))
-    title = f"{label} in {name} - ANKS Construction and Landscaping"
-    description = f"{cfg['seo_service']} in {name} and Melbourne's east. {cfg['short'].replace('&amp;','and')} delivered by one in-house team, from excavation through to handover."
+    title = f"{SEO_TITLE_PREFIX[service_key]} in {name} | ANKS Construction"
+    if service_key == "builders-developers":
+        # The shared template overruns 170 chars for this service; keep it tight.
+        description = (f"Landscape and external works for builders and developers in {name}. "
+                       "One in-house team from excavation to handover, on your build programme.")
+    else:
+        description = f"{cfg['seo_service']} in {name} and Melbourne's east. {cfg['short'].replace('&amp;','and')} delivered by one in-house team, from excavation through to handover."
 
     angle = sub.get("service_angle", {}).get(service_key, "")
     hero_lede_extra = f'<p class="hero-lede">{esc(angle)}</p>' if angle else ""
@@ -653,7 +666,7 @@ def render_hub_page(sub):
     slug = f"landscaping-{sub['slug']}"
     canonical = f"{SITE}/{slug}"
     name = sub["name"]
-    title = f"Landscape Construction in {name} - ANKS Construction and Landscaping"
+    title = f"Landscape Construction in {name} | ANKS Construction"
     description = f"Architectural landscape construction in {name}. One in-house team across landscape, construction and earthworks, from first excavation to final planting and handover."
 
     hero_lede = sub.get("hub_hero_lede",
