@@ -82,6 +82,18 @@
      widget's real rendered height once live if it leaves a visible gap. */
   .reviews-embed { min-height: 440px; }
   @media (max-width: 640px) { .reviews-embed { min-height: 560px; } }
+  /* Contact-preference hint under the enquiry inputs */
+  .git-hint{ font-size:0.78rem; color:var(--ink-mute); margin-top:-0.35rem; }
+  /* Persistent mobile enquiry bar (mobile only, appears past the hero) */
+  .mcta{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
+    gap:0.6rem; padding:0.7rem 1rem; background:rgba(42,38,32,0.96);
+    transform:translateY(100%); transition:transform .3s ease; }
+  .mcta.is-on{ transform:translateY(0); }
+  @media (max-width:768px){ .mcta{ display:flex; } main{ padding-bottom:4rem; } }
+  .mcta-btn{ flex:1; text-align:center; padding:0.85rem 1rem; border-radius:999px;
+    font-weight:600; font-size:0.92rem; }
+  .mcta-call{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5); }
+  .mcta-enquire{ background:var(--ochre); color:var(--ink); }
 </style>
 
 <!-- ============================================================= -->
@@ -567,8 +579,9 @@
               <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
               <input type="hidden" name="_source" value="architectural-landscaping-lp" />
               <input type="text" name="name" placeholder="Full name *" aria-label="Full name" required />
-              <input type="email" name="email" placeholder="Email (optional)" aria-label="Email" />
-              <input type="tel" name="phone" placeholder="Phone *" aria-label="Phone" required />
+              <input type="email" name="email" placeholder="Email" aria-label="Email" />
+              <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
+              <p class="git-hint">Leave a phone or an email, whichever you prefer.</p>
               <input type="text" name="location" placeholder="Project location (optional)" aria-label="Project location" />
               <select name="project_type" aria-label="Project type">
                 <option value="" disabled selected hidden>Project type (optional)</option>
@@ -601,6 +614,12 @@
       </div>
     </div>
   </section>
+
+  <!-- Persistent mobile enquiry bar (fixed, mobile only) -->
+  <div class="mcta" id="mcta" aria-hidden="true">
+    <a href="tel:+61401500778" class="mcta-btn mcta-call">Call</a>
+    <a href="#enquire" class="mcta-btn mcta-enquire">Request a consultation</a>
+  </div>
 
 </main>
 
@@ -665,6 +684,12 @@
     var thankyou = document.getElementById('anks-lp-thankyou');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var email = form.querySelector('input[name="email"]');
+      var phone = form.querySelector('input[name="phone"]');
+      if ((!email || !email.value.trim()) && (!phone || !phone.value.trim())) {
+        alert('Please add a phone number or an email so we can get back to you.');
+        return;
+      }
       var btn = form.querySelector('.git-submit');
       var original = btn.textContent;
       btn.disabled = true;
@@ -690,6 +715,15 @@
         alert('Something went wrong sending your enquiry. Please call 0401 500 778.');
       });
     });
+  })();
+
+  /* Persistent mobile enquiry bar - reveal once scrolled past the hero */
+  (function () {
+    var b = document.getElementById('mcta'), h = document.querySelector('.hero');
+    if (!b || !h) return;
+    var on = function () { b.classList.toggle('is-on', window.scrollY > h.offsetHeight * 0.8); };
+    window.addEventListener('scroll', on, { passive: true });
+    on();
   })();
 </script>
 </body>
