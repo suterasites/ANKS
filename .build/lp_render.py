@@ -175,6 +175,13 @@ SERVICES = {
 
 SERVICE_ORDER = ["custom-homes", "commercial", "builders-developers"]
 
+# Commercial + builders x suburb pages are generated so each suburb hub's service cards
+# resolve, but they are thin relative to ANKS's premium-residential lead and, at 12-suburb
+# scale, read as doorway / scaled-content pages. Keep them live (users can still reach them
+# from the hub) but noindex,follow them and hold them OUT of the sitemap, so only the
+# landscaping hubs + custom-homes x suburb pages compete in search.
+NOINDEX_SERVICES = {"commercial", "builders-developers"}
+
 # SEO <title> prefixes: tuned so "[prefix] in [Suburb] | ANKS Construction" lands
 # in the 50-60 char sweet spot the audit wants (the nav_label is too long for it).
 SEO_TITLE_PREFIX = {
@@ -186,7 +193,8 @@ SEO_TITLE_PREFIX = {
 
 # --------------------------------------------------------------------------- chrome
 
-def head(*, title, description, canonical, geo, schema):
+def head(*, title, description, canonical, geo, schema, noindex=False):
+    robots = '<meta name="robots" content="noindex, follow" />\n' if noindex else ''
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -200,7 +208,7 @@ gtag('config', 'G-MNX4QVBPCN');
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="{esc(description)}" />
+{robots}<meta name="description" content="{esc(description)}" />
 <meta property="og:title" content="{esc(title)}" />
 <meta property="og:description" content="{esc(description)}" />
 <meta property="og:type" content="website" />
@@ -616,7 +624,7 @@ def render_service_page(service_key, sub):
                                         canonical, crumbs) + [faq_schema(faqs)])
 
     doc = head(title=title, description=description, canonical=canonical,
-               geo=sub, schema=schema)
+               geo=sub, schema=schema, noindex=service_key in NOINDEX_SERVICES)
     doc += NAV
     doc += "\n<main>\n"
     # hero
@@ -791,6 +799,8 @@ def main():
             with open(os.path.join(ROOT, fn), "w", encoding="utf-8") as f:
                 f.write(html_doc)
             print(f"[lp_render] wrote {fn}")
+            if key in NOINDEX_SERVICES:
+                continue  # noindexed: file stays (hub links to it) but held out of the sitemap
             slug = fn[:-5]
             sitemap_pages.append((slug, sub.get("lastmod", "2026-07-22"),
                                   "0.75" if key == "hub" else "0.7"))
