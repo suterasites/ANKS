@@ -818,6 +818,14 @@ def main():
         subprocess.run([sys.executable, patch], check=False)
         print("[lp_render] applied seo_100_patch.py")
 
+    # Relink the sitewide footer "Service areas" band to every suburb that now has a hub.
+    # The FOOTER template ships the band as plain text, so this MUST run after every
+    # generate or the regen silently drops the footer suburb links.
+    linkify = os.path.join(os.path.dirname(os.path.abspath(__file__)), "linkify_footer_suburbs.py")
+    if os.path.isfile(linkify):
+        subprocess.run([sys.executable, linkify], check=False)
+        print("[lp_render] applied linkify_footer_suburbs.py")
+
 
 if __name__ == "__main__":
     main()
