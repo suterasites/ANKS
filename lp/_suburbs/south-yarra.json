@@ -1,0 +1,27 @@
+{
+  "name": "South Yarra",
+  "slug": "south-yarra",
+  "postcode": "3141",
+  "lat": "-37.8380",
+  "lng": "144.9930",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Toorak", "Prahran", "Windsor", "Richmond", "Cremorne", "Melbourne"],
+  "hub_hero_lede": "Architectural landscape construction across South Yarra, from the terraces around Domain and Como to the townhouse and courtyard gardens on its densest streets.",
+  "character_title": "A garden that earns its space in South Yarra.",
+  "character": [
+    "South Yarra is dense, urban and premium: terraces, townhouses and apartments on compact blocks, where outdoor space is limited and every square metre has to work. Gardens here are often courtyards, roof terraces and narrow side returns, so the design has to be precise, and the materiality and structure have to carry the whole look in a small footprint.",
+    "We deliver that as one piece of work. Levels, drainage, waterproofing and structure are resolved against the architecture from the first excavation, and hardscape and planting are detailed to make a small space feel considered and complete. In a compact South Yarra garden the details are the design, and we build them to hold up close."
+  ],
+  "where_lede": "South Yarra sits at the inner south-eastern edge of our service area, a dense, premium suburb where compact gardens have to be resolved with precision.",
+  "service_angle": {
+    "custom-homes": "Courtyards, terraces and side gardens on South Yarra's compact blocks, where a small footprint has to be resolved with precision and detail to feel complete.",
+    "commercial": "Childcare, body-corporate and mixed-use grounds across the South Yarra area, delivered around live operations on tight urban sites.",
+    "builders-developers": "External works packages for builders on South Yarra townhouse and medium-density sites, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Can you deliver a small courtyard or terrace garden in South Yarra?",
+      "a": "Yes. A lot of South Yarra outdoor space is courtyards, side returns and roof or podium terraces, where waterproofing, drainage and structure matter as much as the planting. We resolve those elements against the architecture and detail the finish tightly, so a compact space reads as a considered, complete garden."
+    }
+  ]
+}

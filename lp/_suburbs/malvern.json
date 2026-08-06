@@ -1,0 +1,27 @@
+{
+  "name": "Malvern",
+  "slug": "malvern",
+  "postcode": "3144",
+  "lat": "-37.8630",
+  "lng": "145.0290",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Malvern East", "Armadale", "Toorak", "Glen Iris", "Kooyong", "Prahran"],
+  "hub_hero_lede": "Architectural landscape construction across Malvern, from the period grandeur of its tree-lined streets to the architect-led rebuilds behind established hedges.",
+  "character_title": "A garden that suits a Malvern street.",
+  "character": [
+    "Malvern is a suburb of period grandeur: wide, tree-lined streets, established front gardens, clipped hedges and substantial homes carried carefully from one generation to the next. Gardens here are part of the streetscape, expected to hold a formal, established character while giving a renovated or rebuilt home a contemporary setting behind the frontage.",
+    "We deliver that as one piece of work. Levels, drainage and structure are set against the architecture from the first excavation, and hardscape and planting are detailed against the materials of the home and the formality of the street. The result holds the established character Malvern is known for while resolving cleanly against a modern home."
+  ],
+  "where_lede": "Malvern sits in the premium south-eastern part of our service area, a suburb of period homes and established, formal gardens.",
+  "service_angle": {
+    "custom-homes": "Renovations and rebuilds behind Malvern's period frontages, where a contemporary landscape has to sit comfortably against a formal, established streetscape.",
+    "commercial": "School, childcare and body-corporate grounds across the Malvern area, delivered around live operations and public access.",
+    "builders-developers": "External works packages for custom builders working Malvern's period blocks, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Can you match a contemporary garden to a period Malvern home?",
+      "a": "Yes. A lot of Malvern work sits behind an established period frontage, with a contemporary home or extension behind it. We detail materials, levels and planting so the landscape bridges the two, holding the formal character of the street while giving the modern part of the home the setting it was designed for."
+    }
+  ]
+}

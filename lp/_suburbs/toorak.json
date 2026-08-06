@@ -1,0 +1,27 @@
+{
+  "name": "Toorak",
+  "slug": "toorak",
+  "postcode": "3142",
+  "lat": "-37.8410",
+  "lng": "145.0140",
+  "lastmod": "2026-08-05",
+  "neighbours": ["South Yarra", "Malvern", "Armadale", "Prahran", "Kooyong", "Hawthorn"],
+  "hub_hero_lede": "Architectural landscape construction across Toorak, from the established estate gardens on its grand blocks to the architect-led rebuilds set behind mature hedging.",
+  "character_title": "A garden that meets the standard of a Toorak home.",
+  "character": [
+    "Toorak sits at the top of Melbourne's residential market: large blocks, established estate gardens, significant trees and a long tradition of architect-led homes. The expectation is exacting. A landscape here has to resolve generous grounds, formal structure and refined materiality into something calm and coherent, and it has to be built to a finish that stands up to close, considered scrutiny.",
+    "We deliver that as one piece of work. Levels, drainage, retaining and structure are set against the architecture from the first excavation, and hardscape, planting and lighting are detailed against the materials of the home and the established garden around it. The landscape is delivered and established as a single considered piece, finished to the standard a Toorak project is held to."
+  ],
+  "where_lede": "Toorak anchors the premium south-eastern edge of our service area, a suburb of large blocks and established gardens held to an exacting standard.",
+  "service_angle": {
+    "custom-homes": "Architect-led homes and estate gardens on Toorak's grand blocks, where generous grounds, formal structure and refined materiality have to resolve into one calm, exacting landscape.",
+    "commercial": "Body-corporate, childcare and private-site grounds across the Toorak area, delivered around live operations and access.",
+    "builders-developers": "External works packages for custom builders working Toorak's premium blocks, sequenced so the landscape lands on practical completion week and to the finish the project expects."
+  },
+  "faqs": [
+    {
+      "q": "Do you work to the finish standard a Toorak project expects?",
+      "a": "Yes. Toorak projects are held to an exacting standard, and the landscape is scrutinised as closely as the home. We keep landscape, construction and earthworks under one in-house team with a single line of accountability, and detail the structure, materiality and finishing so the result stands up to that scrutiny."
+    }
+  ]
+}

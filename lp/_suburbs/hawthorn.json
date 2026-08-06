@@ -1,0 +1,27 @@
+{
+  "name": "Hawthorn",
+  "slug": "hawthorn",
+  "postcode": "3122",
+  "lat": "-37.8220",
+  "lng": "145.0350",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Hawthorn East", "Kew", "Camberwell", "Richmond", "Kooyong", "Glenferrie"],
+  "hub_hero_lede": "Architectural landscape construction across Hawthorn, from the Victorian and Edwardian frontages near Glenferrie to the architect-led rebuilds on the streets above the Yarra.",
+  "character_title": "A garden that holds a Hawthorn frontage.",
+  "character": [
+    "Hawthorn is one of Melbourne's most established inner-eastern suburbs, dense with Victorian and Edwardian homes, heritage streetscapes and a strong run of contemporary work behind period facades. Blocks can be tight and layered, and gardens often have to resolve a heritage frontage, a level change and a modern extension in a single, coherent move.",
+    "We deliver that as one piece of work. Levels, drainage and structure are set against the architecture from the first excavation, and hardscape and planting are detailed to bridge the period frontage and the contemporary rear. The result reads as one considered landscape rather than two eras stitched together."
+  ],
+  "where_lede": "Hawthorn sits at the inner edge of our core service area, a suburb of heritage frontages and architect-led rebuilds close to the city.",
+  "service_angle": {
+    "custom-homes": "Heritage-fronted rebuilds across Hawthorn's established streets, where a new landscape has to bridge a period frontage and a contemporary home on a tight, layered block.",
+    "commercial": "School, childcare and body-corporate grounds across the Hawthorn area, delivered around live operations and public access close to the city.",
+    "builders-developers": "External works packages for custom builders working Hawthorn's heritage blocks, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Can you work on tight, heritage-fronted blocks in Hawthorn?",
+      "a": "Yes. Many Hawthorn blocks are compact, layered and carry heritage overlays, with access and level change to resolve on a small footprint. We plan the sequence, access and structure around those constraints from the first excavation, and coordinate with your consultants so the landscape is delivered cleanly despite the tight site."
+    }
+  ]
+}

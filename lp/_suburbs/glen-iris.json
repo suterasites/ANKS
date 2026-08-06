@@ -1,0 +1,27 @@
+{
+  "name": "Glen Iris",
+  "slug": "glen-iris",
+  "postcode": "3146",
+  "lat": "-37.8560",
+  "lng": "145.0560",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Camberwell", "Malvern East", "Ashburton", "Malvern", "Hawthorn East", "Kooyong"],
+  "hub_hero_lede": "Architectural landscape construction across Glen Iris, from the established homes along Gardiners Creek to the architect-led rebuilds on its leafy interior streets.",
+  "character_title": "A garden that belongs on a Glen Iris street.",
+  "character": [
+    "Glen Iris runs quietly through the middle of Melbourne's east, an established suburb of leafy streets, deep blocks and mature canopy, threaded by Gardiners Creek and its trail. Its gardens sit under significant trees and against a mix of period and contemporary homes, so a landscape here has to respect the canopy and the character while giving a new build the setting it was drawn for.",
+    "We deliver that as one piece of work. Levels, drainage and retaining are resolved around established trees and their protection zones from the first excavation, and hardscape and planting are detailed against the materials of the home. The garden reads as though it was always part of the plan, holding the leafy character the suburb is known for."
+  ],
+  "where_lede": "Glen Iris sits at the centre of our core service area, between Camberwell and Malvern, where established gardens and architect-led rebuilds are most concentrated.",
+  "service_angle": {
+    "custom-homes": "Architect-led rebuilds across Glen Iris's leafy streets, where a new landscape has to sit under established canopy and hold the suburb's green character.",
+    "commercial": "School, childcare and body-corporate grounds across the Glen Iris area, delivered around live operations and public access.",
+    "builders-developers": "External works packages for custom builders on Glen Iris knock-down-rebuild blocks, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Do you work around established trees and tree-protection zones in Glen Iris?",
+      "a": "Yes. Glen Iris blocks often carry significant established trees, many of them protected. We plan levels, access and structure around tree-protection zones and coordinate with your arborist and consultants, so the landscape is delivered without compromising the canopy that gives the suburb its character."
+    }
+  ]
+}

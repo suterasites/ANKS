@@ -1,0 +1,27 @@
+{
+  "name": "Brighton East",
+  "slug": "brighton-east",
+  "postcode": "3187",
+  "lat": "-37.9160",
+  "lng": "145.0140",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Brighton", "Hampton", "Bentleigh", "McKinnon", "Elsternwick", "Gardenvale"],
+  "hub_hero_lede": "Architectural landscape construction across Brighton East, from the family homes on its quiet garden streets to the knock-down rebuilds reshaping the blocks between Hampton and Bentleigh.",
+  "character_title": "A garden built for the way Brighton East lives.",
+  "character": [
+    "Brighton East is quieter and more domestic than the bayside strip, a suburb of family homes on square, workable blocks with a steady flow of rebuilds. Gardens here are lived in, doing real work for families while still holding a considered, contemporary look. The best of them resolve the practical and the beautiful without one costing the other.",
+    "We deliver that balance as one piece of work. Levels, drainage and structure are set against the architecture from the first excavation, and hardscape and planting are detailed against the home and the way the family uses the space. Finishing lands with the build, so the garden is ready to live in rather than waiting to be finished."
+  ],
+  "where_lede": "Brighton East sits on the bayside side of our service area, a suburb of family rebuilds where a garden has to work as hard as it looks.",
+  "service_angle": {
+    "custom-homes": "Family rebuilds across Brighton East's garden streets, where a landscape has to be genuinely usable while still reading as part of a considered contemporary home.",
+    "commercial": "School, childcare and body-corporate grounds across the Brighton East area, delivered around live operations and public access.",
+    "builders-developers": "External works packages for custom builders on Brighton East blocks, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Can you design a Brighton East garden that works for a family and still looks considered?",
+      "a": "Yes. Most Brighton East projects are family homes, so the garden has to handle everyday use, lawn, play and entertaining, without losing its design intent. We plan the layout, materials and planting so the practical and the considered sit together rather than compromising each other."
+    }
+  ]
+}

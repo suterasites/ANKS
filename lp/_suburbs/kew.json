@@ -1,0 +1,27 @@
+{
+  "name": "Kew",
+  "slug": "kew",
+  "postcode": "3101",
+  "lat": "-37.8060",
+  "lng": "145.0310",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Kew East", "Hawthorn", "Balwyn", "Camberwell", "Abbotsford", "Richmond"],
+  "hub_hero_lede": "Architectural landscape construction across Kew, from the grand blocks along the Boulevard to the architect-led homes on its established garden streets.",
+  "character_title": "A garden with the scale of a Kew block.",
+  "character": [
+    "Kew is a suburb of scale and established prestige: large blocks, mature gardens, heritage homes and a long tradition of architect-led work, much of it looking over the Yarra and the Boulevard. A landscape here is expected to match the home and the setting, resolving generous grounds, significant trees and considered materiality into something calm and coherent.",
+    "We deliver that as one piece of work. Levels, drainage and retaining are set against the architecture from the first excavation, and hardscape and planting are detailed against the materials of the home and the established canopy around it. The garden is delivered and established as a single considered piece, the way a Kew home expects."
+  ],
+  "where_lede": "Kew sits at the heart of our core service area, a suburb of large blocks and established gardens where architect-led homes are most concentrated.",
+  "service_angle": {
+    "custom-homes": "Architect-led homes on Kew's large, established blocks, where generous grounds, significant trees and considered materiality have to resolve into one calm landscape.",
+    "commercial": "School, childcare and body-corporate grounds across the Kew area, delivered around live operations and public access.",
+    "builders-developers": "External works packages for custom builders working Kew's premium blocks, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Do you take on the larger, established gardens common in Kew?",
+      "a": "Yes. Many Kew blocks are generous and carry mature gardens and significant trees. We resolve levels, retaining and drainage across the whole site and coordinate planting and hardscape against the established canopy, so a larger garden reads as one considered piece rather than a series of disconnected areas."
+    }
+  ]
+}

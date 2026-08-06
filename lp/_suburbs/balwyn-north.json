@@ -1,0 +1,27 @@
+{
+  "name": "Balwyn North",
+  "slug": "balwyn-north",
+  "postcode": "3104",
+  "lat": "-37.7920",
+  "lng": "145.0840",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Balwyn", "Kew East", "Bulleen", "Doncaster", "Deepdene", "Greythorn"],
+  "hub_hero_lede": "Architectural landscape construction across Balwyn North, from the mid-century homes around Greythorn to the architect-led rebuilds rising on its deep, elevated blocks.",
+  "character_title": "A garden that settles into a Balwyn North block.",
+  "character": [
+    "Balwyn North is a suburb of generous, elevated blocks, wide streets and a steady run of knock-down rebuilds. Its gardens tend to be large and open, with the fall of the land and the outlook doing as much work as the planting. A landscape here has to hold that scale, resolving levels and retaining across a sloping block while still feeling calm and considered from the house.",
+    "We deliver that as one piece of work. Earthworks, drainage and structure are set against the architecture from the first excavation, and hardscape and planting are detailed against the materials of the home. The result is a garden that uses the block's size and aspect rather than fighting them, finished to settle in alongside the residents."
+  ],
+  "where_lede": "Balwyn North sits inside our core eastern service area, a short move from our established work in North Balwyn and the surrounding streets.",
+  "service_angle": {
+    "custom-homes": "Architect-led rebuilds on Balwyn North's large, elevated blocks, where levels, retaining and outlook have to be resolved before the garden can read as calm.",
+    "commercial": "School, childcare and body-corporate grounds across the Balwyn North area, delivered around live operations and public access.",
+    "builders-developers": "External works packages for custom builders on Balwyn North knock-down-rebuild blocks, sequenced so the landscape lands on practical completion week."
+  },
+  "faqs": [
+    {
+      "q": "Can you handle the sloping, elevated blocks common in Balwyn North?",
+      "a": "Yes. A lot of Balwyn North sits on a fall, and the retaining and level changes are often the difference between a garden that works and one that does not. We resolve cut and fill, drainage and structural retaining against the architecture from the first excavation, so the finished levels are deliberate rather than left to the end."
+    }
+  ]
+}

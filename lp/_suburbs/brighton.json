@@ -1,0 +1,27 @@
+{
+  "name": "Brighton",
+  "slug": "brighton",
+  "postcode": "3186",
+  "lat": "-37.9060",
+  "lng": "144.9990",
+  "lastmod": "2026-08-05",
+  "neighbours": ["Brighton East", "Hampton", "Elwood", "Elsternwick", "Gardenvale", "Middle Brighton"],
+  "hub_hero_lede": "Architectural landscape construction across Brighton, from the period homes near the bay to the contemporary rebuilds a street back from the foreshore.",
+  "character_title": "A garden that meets a Brighton home on its own terms.",
+  "character": [
+    "Brighton carries a particular weight: generous bayside blocks, established period frontages and a strong run of contemporary architecture, all under coastal light and coastal conditions. Gardens here are seen, and they have to hold up to salt air, exposure and the scrutiny of a suburb that takes its homes seriously. Materiality and planting choices matter as much as the layout.",
+    "We deliver the landscape as a single considered piece of work. Levels, drainage and structure are set against the architecture from the first excavation, hardscape and planting are detailed for the coastal setting, and finishing is resolved so the garden presents the way the home was drawn. The result reads as part of the build, not an afterthought laid around it."
+  ],
+  "where_lede": "Brighton anchors the bayside edge of our service area, where premium period and contemporary homes sit on some of Melbourne's most established garden blocks.",
+  "service_angle": {
+    "custom-homes": "Period frontages and contemporary rebuilds across Brighton's bayside blocks, where planting and materiality have to stand up to coastal exposure while sitting comfortably against the architecture.",
+    "commercial": "School, childcare and body-corporate grounds across the Brighton area, delivered around live operations without disrupting the people who use the site.",
+    "builders-developers": "External works packages for custom builders working Brighton's premium blocks, sequenced so the landscape lands on practical completion week rather than chasing it."
+  },
+  "faqs": [
+    {
+      "q": "Do you account for coastal conditions on Brighton gardens?",
+      "a": "Yes. Bayside blocks in Brighton deal with salt air, wind exposure and sandier ground than the inner east. We select hardscape materials and planting palettes that hold up to those conditions, and detail drainage and structure accordingly, so the garden establishes and ages the way it was intended."
+    }
+  ]
+}
