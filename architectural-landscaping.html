@@ -66,6 +66,15 @@
     letter-spacing: 0.06em;
     margin-right: 0.4rem;
   }
+  .hero-trust-block {
+    margin-top: 1.5rem;
+  }
+  .hero-trust-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 0.35rem;
+  }
   .git-thankyou {
     font-family: 'Inter', sans-serif;
     font-size: 0.98rem;
@@ -84,6 +93,17 @@
   @media (max-width: 640px) { .reviews-embed { min-height: 560px; } }
   /* Contact-preference hint under the enquiry inputs */
   .git-hint{ font-size:0.78rem; color:var(--ink-mute); margin-top:-0.35rem; }
+  /* Hero form contact row: phone and email side-by-side on desktop */
+  .hfc-contact-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.75rem;
+  }
+  @media (max-width:600px){
+    .hfc-contact-row{
+      grid-template-columns:1fr;
+    }
+  }
   /* Persistent mobile enquiry bar (mobile only, appears past the hero) */
   .mcta{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
     gap:0.6rem; padding:0.7rem 1rem; background:#2A2620;
@@ -96,6 +116,58 @@
     font-weight:600; font-size:0.92rem; }
   .mcta-call{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5); }
   .mcta-enquire{ background:var(--ochre); color:var(--ink); }
+
+  /* Contact Summary Section - replacing the old dual-form + git-card layout */
+  .contact-summary-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:start;
+  }
+  .contact-summary-grid > div:first-child{ max-width:520px; }
+  .contact-summary-title{
+    font-size:clamp(1.75rem, 3vw, 2.5rem);
+    line-height:1.15;
+    margin-bottom:1rem;
+  }
+  .contact-summary-lede{
+    font-size:1rem;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  .contact-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+  }
+  .contact-list li{
+    display:flex;
+    flex-direction:column;
+    gap:0.35rem;
+  }
+  .contact-list a{
+    color:var(--terracotta);
+    font-weight:500;
+    text-decoration:none;
+  }
+  .contact-list a:hover{
+    text-decoration:underline;
+  }
+  .contact-label{
+    font-family:'Inter',sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    font-weight:600;
+  }
+  @media (max-width:768px){
+    .contact-summary-grid{
+      grid-template-columns:1fr;
+      gap:2rem;
+    }
+  }
 
   /* Split hero: editorial copy + above-the-fold enquiry card (B1 CRO).
      Card stacks under the copy below 900px. */
@@ -237,29 +309,35 @@
           <p class="hero-lede">
             Landscape design and construction for architectural homes across Melbourne's east. One in-house team from first site walk to final handover, not three trades stitched together at the end.
           </p>
-          <p class="hero-trust"><span class="hero-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>5.0 across 28 Google reviews</p>
+          <div class="hero-trust-block">
+            <p class="hero-trust"><span class="hero-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 across 28 Google reviews</p>
+            <p class="hero-trust-sub">Verified on Google Business Profile</p>
+          </div>
         </div>
 
-        <!-- Above-the-fold enquiry card. Its own Formspree form (id anks-hero-form),
-             wired to the same conversion + phone-or-email guard + thank-you as the
-             bottom #enquire form via wireLeadForm() at the end of the body. -->
+        <!-- Above-the-fold enquiry card (PRIMARY CONVERSION POINT).
+             Simplified form: name + phone/email (one required) + location only.
+             Project type moved to post-submission follow-up email.
+             Formspree ID: mdavgooe (same endpoint as before). -->
         <aside class="hero-form-card">
           <p class="hfc-title">Request a site consultation</p>
-          <p class="hfc-sub">Free and no-obligation. Most enquiries hear back the same day.</p>
+          <p class="hfc-sub">60-minute on-site consultation. Free and no-obligation. Most respond the same day.</p>
           <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-hero-form">
-            <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP hero (ANKS)" />
+            <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
             <input type="hidden" name="_source" value="architectural-landscaping-lp-hero" />
             <input type="text" name="name" placeholder="Full name *" aria-label="Full name" required />
-            <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
-            <input type="email" name="email" placeholder="Email" aria-label="Email" />
-            <p class="hfc-hint">Leave a phone or an email, whichever you prefer.</p>
+            <div class="hfc-contact-row">
+              <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
+              <input type="email" name="email" placeholder="Email" aria-label="Email" />
+            </div>
+            <p class="hfc-hint">Leave a phone number or email - whichever you prefer.</p>
             <input type="text" name="location" placeholder="Project location (optional)" aria-label="Project location" />
-            <button type="submit" class="git-submit">Book Consultation</button>
+            <button type="submit" class="git-submit">Book Your Consultation</button>
           </form>
           <p class="git-thankyou" id="anks-hero-thankyou" hidden>
-            Thank you. Your enquiry is in. We will be in touch shortly, usually the same day. For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
+            <strong>Thank you.</strong> Your enquiry is in. We'll be in touch within 24 hours, usually the same day. For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
           </p>
-          <p class="hfc-trust"><span class="hfc-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> In-house team &middot; excavation to handover</p>
+          <p class="hfc-trust"><span class="hfc-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> From excavation through handover</p>
         </aside>
       </div>
     </div>
@@ -497,7 +575,7 @@
         vision, and we will walk the site and talk through what is possible.
       </p>
       <div class="cta-banner-actions">
-        <a href="#enquire" class="btn btn-primary cta-banner-btn">Request a Site Consultation</a>
+        <a href="#top" class="btn btn-primary cta-banner-btn">Request a Site Consultation</a>
         <a href="tel:+61401500778" class="btn btn-ghost-light cta-banner-btn">Call 0401 500 778</a>
       </div>
     </div>
@@ -602,70 +680,24 @@
     </div>
   </section>
 
-  <!-- ===== ENQUIRE / ON-PAGE FORM (the conversion point) ===== -->
-  <section class="get-in-touch" id="enquire">
-    <div class="container">
-      <div class="git-card">
-        <span class="git-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="7" x2="7" y2="17"/><polyline points="16 17 7 17 7 8"/></svg>
-        </span>
-
-        <div class="git-head">
-          <h2 class="git-title">Request a site consultation</h2>
-          <p class="git-tagline">Every project begins with a free on-site consultation. Bring the plans, the architect, the brief, or just the vision. We will walk the site and talk through what is possible. Most enquiries hear back the same day.</p>
-        </div>
-
-        <div class="git-grid">
-          <div class="git-form-col">
-            <p class="git-label">
-              <svg class="git-star" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2l1.6 6.8L20 6l-4.8 5.2L22 13l-7 .8L17 21l-5-4.4L7 21l2-7.2-7-.8 6.8-1.8L4 6l6.4 2.8z"/></svg>
-              Fill out the form
-            </p>
-            <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-lp-form">
-              <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
-              <input type="hidden" name="_source" value="architectural-landscaping-lp" />
-              <input type="text" name="name" placeholder="Full name *" aria-label="Full name" required />
-              <input type="email" name="email" placeholder="Email" aria-label="Email" />
-              <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
-              <p class="git-hint">Leave a phone or an email, whichever you prefer.</p>
-              <input type="text" name="location" placeholder="Project location (optional)" aria-label="Project location" />
-              <select name="project_type" aria-label="Project type">
-                <option value="" disabled selected hidden>Project type (optional)</option>
-                <option>Architectural home</option>
-                <option>Commercial project</option>
-                <option>Builder / developer</option>
-                <option>New home owner</option>
-                <option>Recently renovated property</option>
-              </select>
-              <textarea name="message" rows="4" placeholder="Tell us about your project (optional)" aria-label="Tell us about your project"></textarea>
-              <button type="submit" class="git-submit">Book Consultation</button>
-            </form>
-            <p class="git-thankyou" id="anks-lp-thankyou" hidden>
-              Thank you. Your enquiry is in. We will be in touch shortly, usually the same day. For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
-            </p>
-          </div>
-
-          <div class="git-media">
-            <img src="assets/pages/north-balwyn/cover.jpeg" alt="Architectural North Balwyn residence by ANKS" loading="lazy" />
-          </div>
-        </div>
-
-        <ul class="git-contact">
-          <li><span>Contact</span>Alexander Stojceski<br />ANKS Construction &amp; Landscaping</li>
-          <li><span>Phone</span><a href="tel:+61401500778">0401 500 778</a></li>
-          <li><span>Email</span><a href="mailto:info@anks.com.au">info@anks.com.au</a></li>
-          <li><span>Reviews</span>5.0 stars across 28 Google reviews</li>
-          <li class="git-contact-wide"><span>Service area</span>Architectural landscaping across Melbourne's east - Camberwell, Canterbury, Balwyn, Kew, Hawthorn, Brighton and the wider east and south-east.</li>
-        </ul>
+  <!-- ===== CONTACT INFO FOOTER SECTION ===== -->
+  <section class="contact-summary section section-warm">
+    <div class="container contact-summary-grid">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="contact-summary-title">Questions before you book?</h2>
+        <p class="contact-summary-lede">
+          Reach out directly. Alexander responds to emails and calls within 24 hours.
+        </p>
       </div>
+      <ul class="contact-list">
+        <li><span class="contact-label">Contact</span>Alexander Stojceski, ANKS Construction &amp; Landscaping</li>
+        <li><span class="contact-label">Phone</span><a href="tel:+61401500778">0401 500 778</a></li>
+        <li><span class="contact-label">Email</span><a href="mailto:info@anks.com.au">info@anks.com.au</a></li>
+        <li><span class="contact-label">Service area</span>Camberwell, Canterbury, Balwyn, Kew, Hawthorn, Brighton and wider east/south-east</li>
+      </ul>
     </div>
   </section>
-
-  <!-- Persistent mobile enquiry bar (fixed, mobile only) -->
-  <div class="mcta" id="mcta" aria-hidden="true">
-    <a href="tel:+61401500778" class="mcta-btn mcta-call">Call</a>
-    <a href="#enquire" class="mcta-btn mcta-enquire">Enquire</a>
-  </div>
 
 </main>
 
@@ -724,56 +756,44 @@
   })();
 
   /* AJAX form submit -> fire conversion on success, show inline thank-you.
-     Shared by BOTH lead forms: the hero enquiry card and the bottom #enquire form. */
+     Primary form: anks-hero-form (hero section).
+     Validates that at least phone OR email is provided. */
   (function () {
-    function wireLeadForm(formId, thankyouId) {
-      var form = document.getElementById(formId);
-      if (!form) return;
-      var thankyou = document.getElementById(thankyouId);
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = form.querySelector('input[name="email"]');
-        var phone = form.querySelector('input[name="phone"]');
-        if ((!email || !email.value.trim()) && (!phone || !phone.value.trim())) {
-          alert('Please add a phone number or an email so we can get back to you.');
-          return;
-        }
-        var btn = form.querySelector('.git-submit');
-        var original = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(function (res) {
-          if (res.ok) {
-            if (typeof anksReportFormConversion === 'function') anksReportFormConversion();
-            form.hidden = true;
-            if (thankyou) { thankyou.hidden = false; thankyou.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-          } else {
-            btn.disabled = false;
-            btn.textContent = original;
-            alert('Something went wrong sending your enquiry. Please call 0401 500 778.');
-          }
-        }).catch(function () {
+    var form = document.getElementById('anks-hero-form');
+    if (!form) return;
+    var thankyou = document.getElementById('anks-hero-thankyou');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.querySelector('input[name="email"]');
+      var phone = form.querySelector('input[name="phone"]');
+      if ((!email || !email.value.trim()) && (!phone || !phone.value.trim())) {
+        alert('Please add a phone number or email so we can get back to you.');
+        return;
+      }
+      var btn = form.querySelector('.git-submit');
+      var original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          if (typeof anksReportFormConversion === 'function') anksReportFormConversion();
+          form.hidden = true;
+          if (thankyou) { thankyou.hidden = false; thankyou.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+        } else {
           btn.disabled = false;
           btn.textContent = original;
           alert('Something went wrong sending your enquiry. Please call 0401 500 778.');
-        });
+        }
+      }).catch(function () {
+        btn.disabled = false;
+        btn.textContent = original;
+        alert('Something went wrong sending your enquiry. Please call 0401 500 778.');
       });
-    }
-    wireLeadForm('anks-hero-form', 'anks-hero-thankyou');
-    wireLeadForm('anks-lp-form', 'anks-lp-thankyou');
-  })();
-
-  /* Persistent mobile enquiry bar - reveal once scrolled past the hero */
-  (function () {
-    var b = document.getElementById('mcta'), h = document.querySelector('.hero');
-    if (!b || !h) return;
-    var on = function () { b.classList.toggle('is-on', window.scrollY > h.offsetHeight * 0.8); };
-    window.addEventListener('scroll', on, { passive: true });
-    on();
+    });
   })();
 </script>
 </body>
