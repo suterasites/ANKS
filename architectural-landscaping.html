@@ -276,6 +276,37 @@
     }, true);
   })();
   </script>
+  <!-- Ad click-ID capture. Persists the Google click ID so every enquiry carries
+       the ad click that produced it. Without this a lead that turns into a real
+       job cannot be uploaded back to Google as an offline conversion, so Smart
+       Bidding never learns which clicks produce work. wbraid/gbraid are the
+       iOS/privacy-restricted equivalents of gclid - on a mobile-heavy account
+       they cover clicks where gclid is absent. 90 days matches Google's import
+       window. Added 2026-08-12. -->
+  <script>/* SUTERA_CLICK_ID */
+  (function(){
+    var KEY = 'anks_click_id', MAX_AGE = 90*24*60*60*1000;
+    var PARAMS = ['gclid','wbraid','gbraid'];
+    function stored(){
+      try {
+        var r = JSON.parse(localStorage.getItem(KEY) || 'null');
+        if (r && r.t && (Date.now() - r.t) < MAX_AGE) return r;
+      } catch (e) {}
+      return null;
+    }
+    try {
+      var q = new URLSearchParams(location.search);
+      for (var i = 0; i < PARAMS.length; i++) {
+        var v = q.get(PARAMS[i]);
+        if (v) {
+          try { localStorage.setItem(KEY, JSON.stringify({ k: PARAMS[i], v: v, t: Date.now() })); } catch (e) {}
+          break;
+        }
+      }
+    } catch (e) {}
+    window.anksClickId = stored;
+  })();
+  </script>
 </head>
 <body id="top">
 
@@ -329,12 +360,17 @@
              Simplified form: name + phone/email (one required) + location only.
              Project type moved to post-submission follow-up email.
              Formspree ID: mdavgooe (same endpoint as before). -->
-        <aside class="hero-form-card">
+        <!-- id="enquire" lives here so the footer "Request a consultation" link
+             still resolves. The old bottom #enquire form was removed when the B1
+             hero card shipped 2026-08-05 and the anchor was left dangling. -->
+        <aside class="hero-form-card" id="enquire">
           <p class="hfc-title">Request a site consultation</p>
           <p class="hfc-sub">60-minute on-site consultation. Free and no-obligation. Most respond the same day.</p>
           <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-hero-form">
             <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
             <input type="hidden" name="_source" value="architectural-landscaping-lp-hero" />
+            <input type="hidden" name="click_id" value="" />
+            <input type="hidden" name="click_id_type" value="" />
             <input type="text" name="name" placeholder="Full name *" aria-label="Full name" required />
             <div class="hfc-contact-row">
               <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
@@ -779,6 +815,16 @@
       if ((!email || !email.value.trim()) && (!phone || !phone.value.trim())) {
         alert('Please add a phone number or email so we can get back to you.');
         return;
+      }
+      /* Stamp the ad click ID at submit time so the enquiry email carries it.
+         This is what makes an offline conversion upload possible later, when a
+         lead turns into an actual job. */
+      var click = typeof window.anksClickId === 'function' ? window.anksClickId() : null;
+      if (click) {
+        var cid = form.querySelector('input[name="click_id"]');
+        var cty = form.querySelector('input[name="click_id_type"]');
+        if (cid) cid.value = click.v;
+        if (cty) cty.value = click.k;
       }
       var btn = form.querySelector('.git-submit');
       var original = btn.textContent;
