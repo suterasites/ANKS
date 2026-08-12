@@ -223,14 +223,24 @@
      verifiable conversion - it only counts completed calls from ad visitors
      after Google provisions + swaps a forwarding number, so it cannot be tested
      by tapping and left the account on 0 tracked calls. Changed 2026-07-07. */
+  /* transport_type:'beacon' is load-bearing, do not remove. A tel: tap hands the
+     page off to the phone dialer immediately, which kills a plain in-flight gtag
+     request before it lands - the account read 0 tracked calls from launch while
+     the GA4 click_to_call event below (which has always used beacon) recorded the
+     same taps fine. Diagnosed 2026-08-12 off a GA4-vs-Ads discrepancy: 1 paid
+     session tapped twice on 08-11, GA4 logged 2, Ads logged 0. Capture phase
+     (true) also matches the GA4 listener so both run before the anchor. */
   function anksReportCallConversion() {
-    gtag('event', 'conversion', { 'send_to': 'AW-18282196444/wDVACM2588ccENzb0I1E' });
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18282196444/wDVACM2588ccENzb0I1E',
+      'transport_type': 'beacon'
+    });
   }
   /* Delegated so it covers every tel: link on the page. */
   document.addEventListener('click', function (e) {
     var link = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
     if (link) anksReportCallConversion();
-  });
+  }, true);
 
   /* Forwarding-number website-call conversion - DORMANT. The config below is
      intentionally disabled so Google no longer swaps the number and this action
