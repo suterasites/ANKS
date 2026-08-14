@@ -175,12 +175,18 @@ SERVICES = {
 
 SERVICE_ORDER = ["custom-homes", "commercial", "builders-developers"]
 
-# Commercial + builders x suburb pages are generated so each suburb hub's service cards
-# resolve, but they are thin relative to ANKS's premium-residential lead and, at 12-suburb
-# scale, read as doorway / scaled-content pages. Keep them live (users can still reach them
-# from the hub) but noindex,follow them and hold them OUT of the sitemap, so only the
-# landscaping hubs + custom-homes x suburb pages compete in search.
-NOINDEX_SERVICES = {"commercial", "builders-developers"}
+# Services whose suburb pages are generated but held out of search (noindex,follow +
+# excluded from sitemap.xml). Empty = every generated page competes in search.
+#
+# 2026-08-07: commercial + builders-developers were put in here as doorway / scaled-content
+# risks, thin relative to ANKS's premium-residential lead at 12-suburb scale.
+# 2026-08-14: REVERSED by James - all of them are indexed again. The measured case for the
+# reversal: those pages run ~780 words of body copy (vs ~870 on the indexed custom-homes
+# pages and ~615 on the indexed landscaping hubs) and carry ~21% unique copy suburb to
+# suburb (vs ~30% on custom-homes), so they are not meaningfully thinner than what was
+# already competing. To hide a service again, put its key back in this set and re-run -
+# the generator handles both the meta tag and the sitemap.
+NOINDEX_SERVICES = set()
 
 # SEO <title> prefixes: tuned so "[prefix] in [Suburb] | ANKS Construction" lands
 # in the 50-60 char sweet spot the audit wants (the nav_label is too long for it).

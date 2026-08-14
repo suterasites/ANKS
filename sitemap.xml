@@ -69,6 +69,7 @@
 
 
 
+
   <!-- LP:START -->
   <url>
     <loc>https://anks.com.au/landscaping-balwyn-north</loc>
@@ -77,6 +78,16 @@
   </url>
   <url>
     <loc>https://anks.com.au/custom-homes-balwyn-north</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-balwyn-north</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-balwyn-north</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.7</priority>
   </url>
@@ -91,12 +102,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://anks.com.au/commercial-balwyn</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-balwyn</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anks.com.au/landscaping-brighton-east</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://anks.com.au/custom-homes-brighton-east</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-brighton-east</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-brighton-east</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.7</priority>
   </url>
@@ -111,12 +142,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://anks.com.au/commercial-brighton</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-brighton</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anks.com.au/landscaping-camberwell</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://anks.com.au/custom-homes-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-camberwell</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-camberwell</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.7</priority>
   </url>
@@ -131,12 +182,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://anks.com.au/commercial-canterbury</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-canterbury</loc>
+    <lastmod>2026-07-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anks.com.au/landscaping-glen-iris</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://anks.com.au/custom-homes-glen-iris</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-glen-iris</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-glen-iris</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.7</priority>
   </url>
@@ -151,12 +222,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://anks.com.au/commercial-hawthorn</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-hawthorn</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anks.com.au/landscaping-kew</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://anks.com.au/custom-homes-kew</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-kew</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-kew</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.7</priority>
   </url>
@@ -171,6 +262,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://anks.com.au/commercial-malvern</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-malvern</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anks.com.au/landscaping-south-yarra</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.75</priority>
@@ -181,12 +282,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://anks.com.au/commercial-south-yarra</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-south-yarra</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anks.com.au/landscaping-toorak</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://anks.com.au/custom-homes-toorak</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/commercial-toorak</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anks.com.au/builders-developers-toorak</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.7</priority>
   </url>
