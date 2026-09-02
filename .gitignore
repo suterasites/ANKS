@@ -12,3 +12,6 @@ assets/Apps/
 assets/pages/north-balwyn/videos/walkthrough.mp4
 assets/pages/sunbury-mansion/videos/testimonial.mp4
 assets/pages/north-balwyn/videos/client-testimonial-original-58mb.mp4
+
+# Local-only CRO review page - renders in the real stylesheet, never deployed
+_preview-hero-cro.html
