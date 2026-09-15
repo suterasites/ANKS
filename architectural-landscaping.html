@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) - GA4 G-MNX4QVBPCN -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNX4QVBPCN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MNX4QVBPCN');
-  </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Architectural landscaping in Melbourne's east. ANKS designs and builds landscape construction as one in-house piece of work, from excavation through to planting and handover, across Camberwell, Canterbury, Balwyn, Kew, Hawthorn and Brighton." />
+<meta name="description" content="Landscape construction and architectural landscaping in Melbourne's east. ANKS designs and builds as one in-house team, from excavation and retaining through to paving, planting and handover, across Camberwell, Canterbury, Balwyn, Kew, Hawthorn and Brighton." />
 <meta name="robots" content="index, follow" />
-<meta property="og:title" content="Architectural Landscaping Melbourne | Design & Construction - ANKS" />
+<meta property="og:title" content="Landscape Construction Melbourne | Architectural Landscaping - ANKS" />
 <meta property="og:description" content="Landscape design and construction resolved with the architecture. One in-house team across excavation, structure, hardscape, planting and handover." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://anks.com.au/assets/pages/north-balwyn/cover.jpeg" />
 <meta property="og:url" content="https://anks.com.au/architectural-landscaping" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Architectural Landscaping Melbourne | Design &amp; Construction - ANKS" />
+<meta name="twitter:title" content="Landscape Construction Melbourne | Architectural Landscaping - ANKS" />
 <meta name="twitter:description" content="Landscape design and construction resolved with the architecture. One in-house team across excavation, structure, hardscape, planting and handover." />
 <meta name="twitter:image" content="https://anks.com.au/assets/pages/north-balwyn/cover.jpeg" />
-<title>Architectural Landscaping Melbourne | Design & Construction - ANKS</title>
+<title>Landscape Construction Melbourne | Architectural Landscaping - ANKS</title>
 <link rel="canonical" href="https://anks.com.au/architectural-landscaping" />
 
 <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192.png" />
@@ -31,10 +23,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png" />
 <meta name="theme-color" content="#C99404" />
 
-<!-- Self-hosted Inter (woff2, latin) - no third-party font origin, no render-block, no FOUT swap.
-     Body weight (400) + headline weight (700) are preloaded; 500/600 fetch on demand. -->
+<!-- Self-hosted Inter (woff2, latin) - no third-party font origin.
+     Preload the weights the first screen actually paints: 400 (lede, inputs),
+     500 (the H1, which is this page's LCP element) and 600 (eyebrow, brand, form
+     title). 700 is not used above the fold. Until 2026-09-15 this preloaded 400 +
+     700, so the H1's own weight was discovered late, off the parsed CSS - on a
+     PageSpeed mobile run the H1 was the LCP element with 2.3s of render delay. -->
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-400-normal.woff2" crossorigin />
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-700-normal.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-500-normal.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-600-normal.woff2" crossorigin />
 <style>
   @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
   @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/inter-latin-500-normal.woff2') format('woff2'); }
@@ -42,8 +39,10 @@
   @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/inter-latin-700-normal.woff2') format('woff2'); }
 </style>
 
-<!-- Preload the LCP hero image so it starts downloading immediately -->
-<link rel="preload" as="image" href="assets/pages/sunbury-mansion/photos/project/sunbury-project-circular-paver-path-lawn.jpeg" fetchpriority="high" />
+<!-- The hero photo is deliberately NOT preloaded or fetchpriority=high. It fills the
+     whole viewport behind the veil, and PageSpeed (mobile, 2026-09-15) reports the H1
+     as the LCP element, not this photo. Preloading 267KB at high priority only made it
+     compete with the CSS and fonts the H1 is actually waiting on. -->
 
 <link rel="stylesheet" href="styles.css" />
 
@@ -109,14 +108,29 @@
       grid-template-columns:1fr;
     }
   }
-  /* Persistent mobile enquiry bar (mobile only, appears past the hero) */
+  /* Mobile header call button. styles.css hides .header-actions under 960px because
+     the main site swaps it for a hamburger menu. This page has no menu, so on a phone
+     (62% of paid clicks) the header carried no call button at all. Keep the round
+     icon, drop the pill, and give it a 44px tap target. */
+  @media (max-width:960px){
+    .site-header .header-actions{ display:flex; }
+    .site-header .header-cta{ display:none; }
+    .site-header .header-arrow{ width:44px; height:44px; }
+  }
+  /* Persistent mobile enquiry bar (mobile only). Shown once the visitor has scrolled
+     PAST the enquiry card and hidden again while the card is on screen, so it can
+     never sit over the form. Restored 2026-09-15: the 08-07 rewrite removed the
+     markup and script but left this CSS and the padding below. */
   .mcta{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
     gap:0.6rem; padding:0.7rem 1rem; background:#2A2620;
     border-top:1px solid rgba(255,255,255,0.10);
     box-shadow:0 -6px 22px rgba(0,0,0,0.28);
-    transform:translateY(100%); transition:transform .3s ease; }
-  .mcta.is-on{ transform:translateY(0); }
-  @media (max-width:768px){ .mcta{ display:flex; } main{ padding-bottom:5.5rem; } }
+    transform:translateY(100%); visibility:hidden;
+    transition:transform .3s ease, visibility .3s; }
+  .mcta.is-on{ transform:translateY(0); visibility:visible; }
+  /* Room under the footer so the bar never covers the last line of it. Padding on
+     <main> did nothing for the footer, which sits after it. */
+  @media (max-width:768px){ .mcta{ display:flex; } .site-footer{ padding-bottom:7rem; } }
   .mcta-btn{ flex:1; text-align:center; padding:0.85rem 1rem; border-radius:999px;
     font-weight:600; font-size:0.92rem; }
   .mcta-call{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5); }
@@ -190,15 +204,15 @@
     box-shadow:var(--shadow-md);
     padding:clamp(1.5rem, 2.5vw, 2.25rem);
     color:var(--ink);
+    scroll-margin-top:6rem; /* #enquire links land below the fixed header */
   }
   .hfc-title{ font-family:'Inter',sans-serif; font-size:1.25rem; font-weight:600;
     letter-spacing:-0.02em; color:var(--ink); margin-bottom:0.4rem; }
   .hfc-sub{ font-family:'Inter',sans-serif; font-size:0.86rem; color:var(--ink-mute);
     line-height:1.5; margin-bottom:1.25rem; }
   .hfc-hint{ font-size:0.78rem; color:var(--ink-mute); margin-top:-0.35rem; }
-  .hfc-trust{ margin-top:1rem; font-size:0.8rem; color:var(--ink-mute);
-    display:flex; align-items:center; gap:0.4rem; }
-  .hfc-stars{ color:var(--ochre); letter-spacing:0.05em; }
+  .hfc-trust{ margin-top:1rem; font-size:0.8rem; line-height:1.5; color:var(--ink-mute); }
+  .hfc-trust a{ text-decoration:underline; text-underline-offset:2px; }
   @media (max-width: 900px){
     .hero--split .hero-grid{ grid-template-columns:1fr; gap:2rem; }
     .hero--split .hero-copy{ max-width:none; }
@@ -206,20 +220,22 @@
 </style>
 
 <!-- ============================================================= -->
-<!-- Google tag (gtag.js) - Google Ads conversion tracking         -->
-<!-- Base tag AW-18282196444. Both conversions wired 2026-06-30:   -->
-<!--   - Form submit  -> event snippet (fires on AJAX success)     -->
-<!--   - Website call -> phone_conversion_number (Google swaps the -->
-<!--     displayed number with a tracking forwarding number for ad -->
-<!--     visitors and counts completed calls).                     -->
-<!-- (GA4 optional: add a second gtag('config','G-...') line.)     -->
-<!-- Do NOT launch until form + call test-fire OK.                 -->
+<!-- Google tag (gtag.js) - GA4 G-MNX4QVBPCN + Google Ads          -->
+<!-- AW-18282196444, ONE loader for both.                          -->
+<!-- Conversions: form submit fires on AJAX success; call fires on -->
+<!-- any tel: tap (see below).                                     -->
+<!-- Until 2026-09-15 the page had a separate gtag.js tag per ID,  -->
+<!-- which downloaded three Google bundles (~465KB) instead of two -->
+<!-- and cost ~170ms of mobile main thread. One loader with a      -->
+<!-- config line per ID is Google's documented setup; the AW       -->
+<!-- container still loads on its own from the config call.        -->
 <!-- ============================================================= -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18282196444"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNX4QVBPCN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  gtag('config', 'G-MNX4QVBPCN');     /* GA4 */
   gtag('config', 'AW-18282196444');   /* Google Ads */
 
   /* CALL conversion = click-to-call (tap on the tel: link). Fires immediately
@@ -340,7 +356,7 @@
   <!-- ===== HERO (split: editorial copy + above-the-fold enquiry card - B1 CRO) ===== -->
   <section class="hero hero--split">
     <div class="hero-media" aria-hidden="true">
-      <img src="assets/pages/sunbury-mansion/photos/project/sunbury-project-circular-paver-path-lawn.jpeg" alt="" width="1206" height="808" fetchpriority="high" decoding="async" />
+      <img src="assets/pages/sunbury-mansion/photos/project/sunbury-project-circular-paver-path-lawn.jpeg" alt="" width="1206" height="808" decoding="async" />
       <div class="hero-veil"></div>
     </div>
 
@@ -349,14 +365,14 @@
         <div class="hero-copy">
           <p class="hero-eyebrow">Landscape design &amp; construction &middot; Melbourne's east</p>
           <h1 class="hero-headline">
-            Architectural Landscaping,<br />
+            Architectural Landscape Construction,<br />
             Designed And Built As One
           </h1>
           <p class="hero-lede">
             Landscape design and construction for architectural homes across Melbourne's east. One in-house team from first site walk to final handover, not three trades stitched together at the end.
           </p>
           <div class="hero-trust-block">
-            <p class="hero-trust"><span class="hero-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 across 28 Google reviews</p>
+            <p class="hero-trust"><span class="hero-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 across 29 Google reviews</p>
             <p class="hero-trust-sub">Verified on Google Business Profile</p>
           </div>
         </div>
@@ -370,7 +386,7 @@
              hero card shipped 2026-08-05 and the anchor was left dangling. -->
         <aside class="hero-form-card" id="enquire">
           <p class="hfc-title">Request a site consultation</p>
-          <p class="hfc-sub">60-minute on-site consultation. Free and no-obligation. Most respond the same day.</p>
+          <p class="hfc-sub">60-minute on-site consultation. Free and no-obligation. We reply within 24 hours, usually the same day.</p>
           <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-hero-form">
             <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
             <input type="hidden" name="_source" value="architectural-landscaping-lp-hero" />
@@ -388,7 +404,9 @@
           <p class="git-thankyou" id="anks-hero-thankyou" hidden>
             <strong>Thank you.</strong> Your enquiry is in. We'll be in touch within 24 hours, usually the same day. For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
           </p>
-          <p class="hfc-trust"><span class="hfc-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> From excavation through handover</p>
+          <!-- Says what the details are for, beside the form that asks for them. This
+               replaced five stars decorating a line that was not a rating. -->
+          <p class="hfc-trust">Your details are only used to reply to this enquiry. <a href="privacy.html">Privacy policy</a></p>
         </aside>
       </div>
     </div>
@@ -428,7 +446,7 @@
     <div class="container">
       <header class="credentials-head">
         <p class="eyebrow">Scope</p>
-        <h2 class="credentials-title">Designed and built under one roof.</h2>
+        <h2 class="credentials-title">Landscape construction, from excavation to planting.</h2>
       </header>
 
       <div class="cap-grid">
@@ -626,7 +644,7 @@
         vision, and we will walk the site and talk through what is possible.
       </p>
       <div class="cta-banner-actions">
-        <a href="#top" class="btn btn-primary cta-banner-btn">Request a Site Consultation</a>
+        <a href="#enquire" class="btn btn-primary cta-banner-btn">Request a Site Consultation</a>
         <a href="tel:+61401500778" class="btn btn-ghost-light cta-banner-btn">Call 0401 500 778</a>
       </div>
     </div>
@@ -752,6 +770,11 @@
 
 </main>
 
+<div class="mcta" id="mcta">
+  <a href="tel:+61401500778" class="mcta-btn mcta-call">Call</a>
+  <a href="#enquire" class="mcta-btn mcta-enquire">Request a consultation</a>
+</div>
+
 <!-- ===== SLIM LANDING-PAGE FOOTER (reduced exit paths) ===== -->
 <footer class="site-footer">
   <div class="container">
@@ -781,7 +804,7 @@
     </div>
 
     <div class="footer-base">
-      <p class="footer-copyright">&copy; <span id="year">2026</span> ANKS Construction and Landscaping</p>
+      <p class="footer-copyright">&copy; <span id="year">2026</span> ANKS Construction and Landscaping &middot; ABN 80 247 197 750</p>
       <p class="footer-base-right">
         <span>South Mountain Road, Upper Plenty VIC 3756 &middot; Moama NSW 2731</span>
         <span><a href="privacy.html">Privacy Policy</a></span>
@@ -804,6 +827,18 @@
   (function () {
     var y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
+  })();
+
+  /* Mobile enquiry bar: on only once the enquiry card has scrolled up out of view,
+     so it is never drawn over the form it points at. */
+  (function () {
+    var bar = document.getElementById('mcta');
+    var card = document.getElementById('enquire');
+    if (!bar || !card || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1];
+      bar.classList.toggle('is-on', !e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(card);
   })();
 
   /* AJAX form submit -> fire conversion on success, show inline thank-you.
