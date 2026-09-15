@@ -9,9 +9,21 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Self-hosted fonts (woff2, latin) - no third-party font origin.
+       The Google Fonts stylesheet this replaces was render-blocking: 1.5KB of
+       CSS behind a DNS + TCP + TLS handshake to a new origin, which then pointed
+       at a second new origin for the woff2. Chrome measured 751ms of blocked
+       render for it on this site. Preloaded weights are the ones the first
+       screen paints; the rest are declared and fetched only if used. -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-400-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-500-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-600-normal.woff2" crossorigin />
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/inter-latin-500-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/inter-latin-700-normal.woff2') format('woff2'); }
+  </style>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{min-height:100vh;display:flex;align-items:center;justify-content:center;
