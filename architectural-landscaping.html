@@ -211,6 +211,23 @@
   .hfc-sub{ font-family:'Inter',sans-serif; font-size:0.86rem; color:var(--ink-mute);
     line-height:1.5; margin-bottom:1.25rem; }
   .hfc-hint{ font-size:0.78rem; color:var(--ink-mute); margin-top:-0.35rem; }
+  /* Photo upload. Styled to sit in the same column as the inputs rather than
+     as a native control, which on Safari is a bare button with no field box. */
+  /* styles.css sets .git-form textarea to min-height 120px for the full contact
+     page. In this hero card that is half the form for a one-sentence answer. */
+  .git-form textarea[name="scope"]{ min-height:0; }
+  .hfc-file-label{ font-family:'Inter',sans-serif; font-size:0.86rem; font-weight:500;
+    color:var(--ink); margin-bottom:-0.45rem; }
+  .git-form input[type="file"]{ font-size:0.9rem; padding:0.7rem 0.8rem; cursor:pointer; }
+  .git-form input[type="file"]::file-selector-button{
+    font:inherit; font-weight:500; margin-right:0.8rem; padding:0.5rem 0.95rem;
+    border:1px solid var(--rule); border-radius:var(--radius);
+    background:var(--paper); color:var(--ink); cursor:pointer;
+    transition:border-color var(--transition), background var(--transition);
+  }
+  .git-form input[type="file"]::file-selector-button:hover{ border-color:var(--ink-mute); }
+  .hfc-file-note{ font-size:0.78rem; margin-top:-0.35rem; color:var(--ink-mute); }
+  .hfc-file-note[data-state="error"]{ color:#a8321f; }
   .hfc-trust{ margin-top:1rem; font-size:0.8rem; line-height:1.5; color:var(--ink-mute); }
   .hfc-trust a{ text-decoration:underline; text-underline-offset:2px; }
   @media (max-width: 900px){
@@ -387,6 +404,16 @@
              rang each one cold with no idea what the job was. `scope` closes
              that and is the higher-value of the two new fields.
 
+             `scope` is a TEXTAREA and not a select, on James's call, and the
+             reasoning is worth keeping: the lead this form was rebuilt for
+             wanted "a bricklayer for a small wall", which is not an option any
+             service-category dropdown would have carried. A select imposes our
+             guess at ANKS's taxonomy on the enquirer and quietly discards
+             everything that does not fit it; free text costs a sentence of
+             typing and returns the actual job. It is required for the same
+             reason - an optional scope field re-creates the blank column this
+             whole pass exists to fix.
+
              `budget` is the field Alex asked for, and it is worth knowing it
              has already failed once in this exact form: the main-site form
              (index.html) has carried a required budget select since launch, and
@@ -397,12 +424,17 @@
              a gate to clear, which is the only framing under which a person has
              any reason to answer honestly. Do not reword it into a threshold.
 
-             No file input here on purpose. Alex asked for photos, but a mobile
-             file picker on the paid-click conversion point is the highest
-             abandonment field on a form, and Formspree only accepts uploads on
-             a paid plan - on a free one it takes the pick and silently drops
-             the file, which is worse than not asking. The photo ask lives in
-             the thank-you state instead, where it costs no conversions.
+             Photos upload directly, which is what Alex asked for. The account
+             is on a paid Formspree plan (confirmed by James 2026-09-30), so
+             uploads are delivered - do not re-raise the plan as a blocker.
+             The field is OPTIONAL and sits last, below the submit-critical
+             fields, so it adds no barrier to sending an enquiry: a mobile file
+             picker is the highest abandonment control on a form and this is a
+             paid-click conversion point. The thank-you state still carries the
+             photo ask as the fallback for anyone who skips it, and the submit
+             handler strips an over-size selection rather than let Formspree
+             reject the whole POST - the name and phone are worth more than the
+             attachments.
 
              Kept deliberately OUT: start timeframe, and a details textarea.
              This account runs at ~$50/day with 3 LP leads all-time, so field
@@ -413,7 +445,7 @@
         <aside class="hero-form-card" id="enquire">
           <p class="hfc-title">Request a site consultation</p>
           <p class="hfc-sub">60-minute on-site consultation. Free and no-obligation. We reply within 24 hours, usually the same day.</p>
-          <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-hero-form">
+          <form class="git-form" method="POST" action="https://formspree.io/f/mdavgooe" id="anks-hero-form" enctype="multipart/form-data">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
             <input type="hidden" name="_subject" value="New enquiry - Architectural Landscaping LP (ANKS)" />
             <input type="hidden" name="_source" value="architectural-landscaping-lp-hero" />
@@ -426,17 +458,8 @@
             </div>
             <p class="hfc-hint">Leave a phone number or email - whichever you prefer.</p>
             <input type="text" name="location" placeholder="Project location *" aria-label="Project location" required />
-            <select name="scope" aria-label="What the project involves" required>
-              <option value="" disabled selected hidden>What's involved? *</option>
-              <option>New garden, whole site</option>
-              <option>Driveway &amp; crossover</option>
-              <option>Retaining &amp; structural</option>
-              <option>Paving &amp; hardscape</option>
-              <option>Pool surrounds</option>
-              <option>Fencing &amp; gates</option>
-              <option>Planting &amp; turf only</option>
-              <option>Not sure yet</option>
-            </select>
+            <textarea name="scope" rows="3" placeholder="What's involved? *" aria-label="What the project involves" required></textarea>
+            <p class="hfc-hint">A sentence is plenty - what you want done, and roughly how big it is.</p>
             <select name="budget" aria-label="Approximate budget" required>
               <option value="" disabled selected hidden>Approximate budget *</option>
               <option>Under $50,000</option>
@@ -447,11 +470,14 @@
               <option>Not sure yet</option>
             </select>
             <p class="hfc-hint">A rough range is fine - it helps us bring the right people to the consultation.</p>
+            <label class="hfc-file-label" for="anks-photos">Photos of the space (optional)</label>
+            <input type="file" id="anks-photos" name="photos" accept="image/*" multiple aria-describedby="anks-photos-note" />
+            <p class="hfc-file-note" id="anks-photos-note">Up to 8 photos. It lets us come to the consultation already knowing the site.</p>
             <button type="submit" class="git-submit">Book Your Consultation</button>
           </form>
           <p class="git-thankyou" id="anks-hero-thankyou" hidden>
             <strong>Thank you.</strong> Your enquiry is in. We'll be in touch within 24 hours, usually the same day.<br /><br />
-            If you have photos of the space, reply to the confirmation email with them - it helps us come prepared.<br /><br />
+            If you did not attach photos, you can still reply to the confirmation email with them - it helps us come prepared.<br /><br />
             For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
           </p>
           <!-- Says what the details are for, beside the form that asks for them. This
@@ -898,8 +924,59 @@
     var form = document.getElementById('anks-hero-form');
     if (!form) return;
     var thankyou = document.getElementById('anks-hero-thankyou');
+
+    /* Photo upload guard. The ONLY rule here: a photo problem must never cost
+       the enquiry. Formspree rejects an over-size POST outright, which on this
+       form would surface as the generic "something went wrong" alert and lose
+       the name, phone and suburb along with the pictures - the enquiry is worth
+       far more than the attachments. So an over-size or over-count selection is
+       CLEARED and the person is told, rather than blocked or left to fail at
+       submit. Caps are deliberately conservative; raise them here if the plan
+       allows more. A modern iPhone photo is roughly 2-5MB, so 25MB total is
+       about six to eight of them, which matches the 8-file count cap. */
+    var MAX_FILES = 8, MAX_FILE = 10 * 1024 * 1024, MAX_TOTAL = 25 * 1024 * 1024;
+    var photos = document.getElementById('anks-photos');
+    var note = document.getElementById('anks-photos-note');
+    var NOTE_DEFAULT = note ? note.textContent : '';
+
+    function setNote(msg, isError) {
+      if (!note) return;
+      note.textContent = msg;
+      if (isError) { note.setAttribute('data-state', 'error'); }
+      else { note.removeAttribute('data-state'); }
+    }
+    /* Returns true if the selection is usable. Clears it and explains if not. */
+    function checkPhotos() {
+      if (!photos || !photos.files || !photos.files.length) { setNote(NOTE_DEFAULT, false); return true; }
+      var files = photos.files, total = 0, i;
+      if (files.length > MAX_FILES) {
+        photos.value = '';
+        setNote('That is ' + files.length + ' photos - please pick up to ' + MAX_FILES + '. You can send the rest by replying to the confirmation email.', true);
+        return false;
+      }
+      for (i = 0; i < files.length; i++) {
+        total += files[i].size;
+        if (files[i].size > MAX_FILE) {
+          photos.value = '';
+          setNote('"' + files[i].name + '" is too large to attach. Send your enquiry without it and reply to the confirmation email with the photo.', true);
+          return false;
+        }
+      }
+      if (total > MAX_TOTAL) {
+        photos.value = '';
+        setNote('Those photos come to more than we can attach at once. Please pick a few, or send your enquiry and reply to the confirmation email with them.', true);
+        return false;
+      }
+      setNote(files.length === 1 ? '1 photo attached.' : files.length + ' photos attached.', false);
+      return true;
+    }
+    if (photos) photos.addEventListener('change', checkPhotos);
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      /* Belt and braces - if the change handler never ran, this still strips a
+         bad selection instead of letting the POST fail with the lead inside. */
+      checkPhotos();
       var email = form.querySelector('input[name="email"]');
       var phone = form.querySelector('input[name="phone"]');
       if ((!email || !email.value.trim()) && (!phone || !phone.value.trim())) {
