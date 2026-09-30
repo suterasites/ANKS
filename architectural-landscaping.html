@@ -378,9 +378,35 @@
         </div>
 
         <!-- Above-the-fold enquiry card (PRIMARY CONVERSION POINT).
-             Simplified form: name + phone/email (one required) + location only.
-             Project type moved to post-submission follow-up email.
-             Formspree ID: mdavgooe (same endpoint as before). -->
+             Fields: name + phone/email (one required) + location + scope + budget.
+             Formspree ID: mdavgooe (same endpoint as before).
+
+             2026-09-30 qualification pass, at Alex's request after two misses.
+             What it is actually fixing: every LP lead logged in the CRM has a
+             BLANK "Service requested" because the form never asked, so Alex
+             rang each one cold with no idea what the job was. `scope` closes
+             that and is the higher-value of the two new fields.
+
+             `budget` is the field Alex asked for, and it is worth knowing it
+             has already failed once in this exact form: the main-site form
+             (index.html) has carried a required budget select since launch, and
+             the 2026-09-16 enquiry picked the TOP band then told Alex on site
+             she would not go past a quarter of it. A self-reported band is
+             aspirational. The hint under it is doing the real work - it frames
+             the range as something that helps ANKS turn up prepared rather than
+             a gate to clear, which is the only framing under which a person has
+             any reason to answer honestly. Do not reword it into a threshold.
+
+             No file input here on purpose. Alex asked for photos, but a mobile
+             file picker on the paid-click conversion point is the highest
+             abandonment field on a form, and Formspree only accepts uploads on
+             a paid plan - on a free one it takes the pick and silently drops
+             the file, which is worse than not asking. The photo ask lives in
+             the thank-you state instead, where it costs no conversions.
+
+             Kept deliberately OUT: start timeframe, and a details textarea.
+             This account runs at ~$50/day with 3 LP leads all-time, so field
+             count is bought with lead volume. Six is the agreed ceiling. -->
         <!-- id="enquire" lives here so the footer "Request a consultation" link
              still resolves. The old bottom #enquire form was removed when the B1
              hero card shipped 2026-08-05 and the anchor was left dangling. -->
@@ -399,11 +425,34 @@
               <input type="email" name="email" placeholder="Email" aria-label="Email" />
             </div>
             <p class="hfc-hint">Leave a phone number or email - whichever you prefer.</p>
-            <input type="text" name="location" placeholder="Project location (optional)" aria-label="Project location" />
+            <input type="text" name="location" placeholder="Project location *" aria-label="Project location" required />
+            <select name="scope" aria-label="What the project involves" required>
+              <option value="" disabled selected hidden>What's involved? *</option>
+              <option>New garden, whole site</option>
+              <option>Driveway &amp; crossover</option>
+              <option>Retaining &amp; structural</option>
+              <option>Paving &amp; hardscape</option>
+              <option>Pool surrounds</option>
+              <option>Fencing &amp; gates</option>
+              <option>Planting &amp; turf only</option>
+              <option>Not sure yet</option>
+            </select>
+            <select name="budget" aria-label="Approximate budget" required>
+              <option value="" disabled selected hidden>Approximate budget *</option>
+              <option>Under $50,000</option>
+              <option>$50,000 - $100,000</option>
+              <option>$100,000 - $250,000</option>
+              <option>$250,000 - $500,000</option>
+              <option>$500,000+</option>
+              <option>Not sure yet</option>
+            </select>
+            <p class="hfc-hint">A rough range is fine - it helps us bring the right people to the consultation.</p>
             <button type="submit" class="git-submit">Book Your Consultation</button>
           </form>
           <p class="git-thankyou" id="anks-hero-thankyou" hidden>
-            <strong>Thank you.</strong> Your enquiry is in. We'll be in touch within 24 hours, usually the same day. For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
+            <strong>Thank you.</strong> Your enquiry is in. We'll be in touch within 24 hours, usually the same day.<br /><br />
+            If you have photos of the space, reply to the confirmation email with them - it helps us come prepared.<br /><br />
+            For anything urgent, call <a href="tel:+61401500778">0401 500 778</a>.
           </p>
           <!-- Says what the details are for, beside the form that asks for them. This
                replaced five stars decorating a line that was not a rating. -->
