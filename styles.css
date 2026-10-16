@@ -2399,6 +2399,19 @@ em {
   line-height: 1.6;
   color: var(--ink-mute);
 }
+/* Suburb names that have their own page link to it. Same type as the plain chips, so
+   the list still reads as one list; the colour shift on hover is the affordance. */
+.suburbs-list a { display: block; }
+.suburbs-extra a {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+.suburbs-list a:hover,
+.suburbs-list a:focus-visible,
+.suburbs-extra a:hover,
+.suburbs-extra a:focus-visible { color: var(--terracotta); }
 
 .sfaq-list {
   max-width: 880px;
