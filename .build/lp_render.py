@@ -220,6 +220,10 @@ gtag('config', 'G-MNX4QVBPCN');
 <meta property="og:type" content="website" />
 <meta property="og:image" content="{SITE}/assets/pages/north-balwyn/cover.jpeg" />
 <meta property="og:url" content="{canonical}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{esc(title)}" />
+<meta name="twitter:description" content="{esc(description)}" />
+<meta name="twitter:image" content="{SITE}/assets/pages/north-balwyn/cover.jpeg" />
 <title>{esc(title)}</title>
 <link rel="canonical" href="{canonical}" />
 
@@ -234,9 +238,21 @@ gtag('config', 'G-MNX4QVBPCN');
 <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png" />
 <meta name="theme-color" content="#C99404" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- Self-hosted fonts (woff2, latin) - no third-party font origin.
+     The Google Fonts stylesheet this replaces was render-blocking: 1.5KB of
+     CSS behind a DNS + TCP + TLS handshake to a new origin, which then pointed
+     at a second new origin for the woff2. Chrome measured 751ms of blocked
+     render for it on this site. Preloaded weights are the ones the first
+     screen paints; the rest are declared and fetched only if used. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-400-normal.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-500-normal.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-600-normal.woff2" crossorigin />
+<style>
+  @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }}
+  @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/inter-latin-500-normal.woff2') format('woff2'); }}
+  @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }}
+  @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/inter-latin-700-normal.woff2') format('woff2'); }}
+</style>
 
 <script type="application/ld+json">
 {schema}
@@ -492,9 +508,26 @@ def projects_section(cfg, heading):
 """
 
 
-def where_section(sub, lede):
+def suburb_slug(name):
+    return name.strip().lower().replace(" ", "-")
+
+
+def where_section(sub, lede, family, built):
+    """The "Around <suburb>" chips. A neighbour with its own page links to it, in the same
+    page family: a hub links the neighbouring hub, a service page links the SAME service
+    next door (custom-homes-camberwell -> custom-homes-canterbury). Until 2026-10-16 these
+    were plain text, so a suburb page's only inbound links were its own hub and the
+    sitewide footer (Canterbury sat around #50-60 for searches naming it, and no search
+    naming Brighton East reached the site at all in 90 days).
+    Clean URLs on purpose: the host 308s .html, and a link through a redirect is a weaker
+    signal than one that lands on the canonical."""
+    def chip(n):
+        slug = suburb_slug(n)
+        if slug in built and slug != sub["slug"]:
+            return f'<li><a href="/{family}-{slug}">{esc(n)}</a></li>'
+        return f"<li>{esc(n)}</li>"
     neighbours = sub.get("neighbours", [])
-    chips = "".join(f"<li>{esc(n)}</li>" for n in [sub["name"]] + neighbours)
+    chips = f"<li>{esc(sub['name'])}</li>" + "".join(chip(n) for n in neighbours)
     return f"""
   <section class="suburbs section">
     <div class="container suburbs-grid">
@@ -604,7 +637,7 @@ def dump_schema(graph):
 
 # --------------------------------------------------------------------------- page builders
 
-def render_service_page(service_key, sub):
+def render_service_page(service_key, sub, built):
     cfg = SERVICES[service_key]
     slug = f"{service_key}-{sub['slug']}"
     canonical = f"{SITE}/{slug}"
@@ -668,7 +701,8 @@ def render_service_page(service_key, sub):
     doc += caps_section(cfg, cfg["caps_title"])
     doc += tracks_section(cfg)
     doc += projects_section(cfg, "Real ANKS projects.")
-    doc += where_section(sub, sub.get("where_lede", f"We deliver across {name} and the surrounding eastern and south-eastern suburbs."))
+    doc += where_section(sub, sub.get("where_lede", f"We deliver across {name} and the surrounding eastern and south-eastern suburbs."),
+                         service_key, built)
     doc += faq_section(faqs, f"{label} in {name}.")
     doc += cta_section(sub)
     doc += "\n</main>\n"
@@ -676,7 +710,7 @@ def render_service_page(service_key, sub):
     return nd(doc)
 
 
-def render_hub_page(sub):
+def render_hub_page(sub, built):
     slug = f"landscaping-{sub['slug']}"
     canonical = f"{SITE}/{slug}"
     name = sub["name"]
@@ -692,7 +726,7 @@ def render_hub_page(sub):
     cards = []
     for sk in SERVICE_ORDER:
         c = SERVICES[sk]
-        cards.append(f"""        <a class="track-card lp-service-card" href="{sk}-{sub['slug']}.html">
+        cards.append(f"""        <a class="track-card lp-service-card" href="/{sk}-{sub['slug']}">
           <p class="track-eyebrow">{c['hero_eyebrow']}</p>
           <h3 class="track-title">{c['nav_label']}</h3>
           <p class="track-desc">{esc(sub.get('service_angle', {}).get(sk, ''))}</p>
@@ -756,7 +790,8 @@ def render_hub_page(sub):
   </section>
 """
     doc += projects_section(SERVICES["custom-homes"], "Recent work near you.")
-    doc += where_section(sub, sub.get("where_lede", f"We deliver across {name} and the surrounding eastern and south-eastern suburbs."))
+    doc += where_section(sub, sub.get("where_lede", f"We deliver across {name} and the surrounding eastern and south-eastern suburbs."),
+                         "landscaping", built)
     doc += faq_section(faqs, f"Landscape construction in {name}.")
     doc += cta_section(sub)
     doc += "\n</main>\n"
@@ -778,6 +813,9 @@ def update_sitemap(pages):
     with open(SITEMAP, encoding="utf-8") as f:
         xml = f.read()
     xml = re.sub(r"\n  <!-- LP:START -->.*?<!-- LP:END -->", "", xml, flags=re.DOTALL)
+    # The removal leaves the newline that followed LP:END behind, so without this every
+    # run added one blank line above the block (seven had piled up by 2026-10-16).
+    xml = re.sub(r"\s*</urlset>", "\n</urlset>", xml)
     lines = ["\n  <!-- LP:START -->"]
     for slug, lastmod, priority in pages:
         lines.append(f"  <url>\n    <loc>{SITE}/{slug}</loc>\n    <lastmod>{lastmod}</lastmod>\n    <priority>{priority}</priority>\n  </url>")
@@ -797,11 +835,12 @@ def main():
                 with open(os.path.join(SUBURBS_DIR, fn), encoding="utf-8") as f:
                     subs.append(json.load(f))
 
+    built = {sub["slug"] for sub in subs}
     sitemap_pages = []
     for sub in subs:
         for key, fn in [("hub", f"landscaping-{sub['slug']}.html")] + \
                        [(sk, f"{sk}-{sub['slug']}.html") for sk in SERVICE_ORDER]:
-            html_doc = render_hub_page(sub) if key == "hub" else render_service_page(key, sub)
+            html_doc = render_hub_page(sub, built) if key == "hub" else render_service_page(key, sub, built)
             with open(os.path.join(ROOT, fn), "w", encoding="utf-8") as f:
                 f.write(html_doc)
             print(f"[lp_render] wrote {fn}")
