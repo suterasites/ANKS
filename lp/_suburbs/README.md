@@ -41,9 +41,16 @@ voice (see the site CLAUDE.md banned-phrases list). Em dashes are auto-normalise
   },
   "faqs": [                                     // suburb-specific FAQs (0-2), shown on every page for the suburb
     { "q": "...", "a": "..." }
-  ]
+  ],
+  "hub_lastmod": "2026-11-05",                  // optional: sitemap lastmod for the hub only, after a hub-only change
+  "hub_seo": {                                  // optional: hub wording in the searcher's own word. Any key can be omitted
+    "title": "...", "description": "...", "eyebrow": "...", "work_q": "...", "work_a": "..."
+  }
 }
 ```
+
+`hub_seo` is for a hub with a real search behind it (South Yarra: "landscaper south yarra", 2026-11-05).
+It leaves every other suburb byte-identical, so a change can be measured on one page first.
 
 Write real, differentiated copy per suburb (homes, streets, constraints, neighbouring areas).
 Near-identical pages with only the suburb name swapped read as doorway pages and will not rank.
