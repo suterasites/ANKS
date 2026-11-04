@@ -714,8 +714,12 @@ def render_hub_page(sub, built):
     slug = f"landscaping-{sub['slug']}"
     canonical = f"{SITE}/{slug}"
     name = sub["name"]
-    title = f"Landscape Construction in {name} | ANKS Construction"
-    description = f"Architectural landscape construction in {name}. One in-house team across landscape, construction and earthworks, from first excavation to final planting and handover."
+    # Optional wording overrides from the suburb's JSON, for a hub with a real search to
+    # answer in the searcher's own word (South Yarra, "landscaper south yarra"). A suburb
+    # without the block renders exactly as before.
+    seo = sub.get("hub_seo", {})
+    title = seo.get("title", f"Landscape Construction in {name} | ANKS Construction")
+    description = seo.get("description", f"Architectural landscape construction in {name}. One in-house team across landscape, construction and earthworks, from first excavation to final planting and handover.")
 
     hero_lede = sub.get("hub_hero_lede",
                         f"Architectural landscape construction across {name} and Melbourne's east. Excavation, structure, hardscape, planting and lighting delivered as one considered piece of work.")
@@ -734,7 +738,7 @@ def render_hub_page(sub, built):
         </a>""")
 
     faqs = sub_local_faqs(sub, None) + [
-        (f"Do you work across {name}?", f"Yes. {name} sits inside our core eastern and south-eastern service area. We deliver architectural landscape construction, commercial works and builder external-works packages across {name} and the surrounding suburbs."),
+        (seo.get("work_q", f"Do you work across {name}?"), seo.get("work_a", f"Yes. {name} sits inside our core eastern and south-eastern service area. We deliver architectural landscape construction, commercial works and builder external-works packages across {name} and the surrounding suburbs.")),
         ("Is it one team or subcontractors?", "One in-house team. Landscape, construction and earthworks all sit under one company with a single line of accountability, so the work resolves as a single piece rather than three trades stitched together at the end."),
         ("Where can we see your work?", "Our portfolio includes recent residential work in North Balwyn and Sunbury and commercial grounds at Mernda Hills and St James, Vermont. Every project shown is real ANKS work."),
     ]
@@ -768,7 +772,7 @@ def render_hub_page(sub, built):
   <section class="sector-intro section">
     <div class="container sector-intro-grid">
       <div class="sector-intro-text">
-        <p class="eyebrow">In {esc(name)}</p>
+        <p class="eyebrow">{esc(seo.get('eyebrow', f'In {name}'))}</p>
         <h2 class="sector-intro-title">{esc(sub.get('character_title', f'Landscape that reads as part of the {name} home.'))}</h2>
         {intro_p}
       </div>
@@ -847,7 +851,10 @@ def main():
             if key in NOINDEX_SERVICES:
                 continue  # noindexed: file stays (hub links to it) but held out of the sitemap
             slug = fn[:-5]
-            sitemap_pages.append((slug, sub.get("lastmod", "2026-07-22"),
+            lastmod = sub.get("lastmod", "2026-07-22")
+            if key == "hub":  # a hub-only copy change must not re-date the 3 service pages
+                lastmod = sub.get("hub_lastmod", lastmod)
+            sitemap_pages.append((slug, lastmod,
                                   "0.75" if key == "hub" else "0.7"))
 
     update_sitemap(sitemap_pages)
