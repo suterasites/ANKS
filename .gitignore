@@ -15,3 +15,6 @@ assets/pages/north-balwyn/videos/client-testimonial-original-58mb.mp4
 
 # Local-only CRO review page - renders in the real stylesheet, never deployed
 _preview-hero-cro.html
+
+# Internal notes. The host publishes everything tracked here, so this stays local.
+lp/SUBURB-ROLLOUT-PLAN.md
